@@ -445,6 +445,7 @@
 </head>
 <body>
 
+    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -457,6 +458,7 @@
                     <li><a href="#skills" data-key="navSkills">Skills</a></li>
                     <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
+                <!-- Language Toggle Button -->
                 <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
             </div>
         </div>
@@ -464,6 +466,7 @@
 
     <div class="container">
         
+        <!-- Hero Section -->
         <main class="hero">
             <div class="hero-left">
                 <div class="status">
@@ -479,7 +482,7 @@
                 
                 <div class="hero-buttons">
                     <a href="#projects" class="btn-primary" data-key="btnWork">View My Work</a>
-                    <a href="#contact" class="btn-secondary" data-key="btnConnect">Let's Connect</a>
+                    <a href="#contact" class="btn-secondary" data-key="btnConnect">Contact Me</a>
                 </div>
             </div>
             
@@ -498,6 +501,7 @@
             </div>
         </main>
 
+        <!-- Skills Marquee -->
         <div class="skills-marquee" id="skills">
             <div class="skill-badge"># Luau</div>
             <div class="skill-badge"># Roblox Studio</div>
@@ -508,6 +512,7 @@
             <div class="skill-badge"># OOP (Object-Oriented)</div>
         </div>
 
+        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">Featured <span>Projects</span></h2>
             
@@ -532,10 +537,12 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
             
             <div class="social-grid">
+                <!-- Roblox -->
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
@@ -544,6 +551,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Discord -->
                 <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="DiscordIcon.png" class="social-icon" alt="Discord">
@@ -552,6 +560,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- GitHub -->
                 <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
@@ -560,6 +569,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- X -->
                 <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="XIcon.png" class="social-icon" alt="X">
@@ -568,6 +578,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
@@ -576,6 +587,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Twitch -->
                 <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
@@ -584,6 +596,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- YouTube -->
                 <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
@@ -592,6 +605,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Email -->
                 <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
                     <div class="social-left">
                         <img src="GmailIcon.png" class="social-icon" alt="Email">
@@ -602,12 +616,14 @@
             </div>
         </section>
 
+        <!-- Footer -->
         <footer>
             <p data-key="footerText">microb © 2026 • Developer Portfolio</p>
         </footer>
 
     </div>
 
+    <!-- Interactive Language Control Script -->
     <script>
         const translations = {
             en: {
@@ -618,7 +634,7 @@
                 heroTitle: "Designing <span>High-Performance Experiences</span> on Roblox.",
                 heroBio: "Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.",
                 btnWork: "View My Work",
-                btnConnect: "Let's Connect",
+                btnConnect: "Contact Me",
                 projectsTitle: "Featured <span>Projects</span>",
                 project1Tag: "[Simulation / City-Life]",
                 project1Desc: "An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.",
@@ -638,7 +654,7 @@
                 heroTitle: "Concepteur d'<span>Expériences Hautes Performances</span> sur Roblox.",
                 heroBio: "Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.",
                 btnWork: "Voir mon travail",
-                btnConnect: "Me connecter",
+                btnConnect: "Me contacter",
                 projectsTitle: "Projets <span>Majeurs</span>",
                 project1Tag: "[Simulation / Ville]",
                 project1Desc: "Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.",
@@ -657,6 +673,7 @@
             const btn = document.getElementById('langBtn');
             
             body.setAttribute('lang', lang);
+            // If the site language is English, the button proposes to switch to "FR" and vice-versa
             btn.innerText = lang === 'en' ? 'FR' : 'EN';
             
             document.querySelectorAll('[data-key]').forEach(element => {
@@ -675,7 +692,7 @@
             applyLanguage(nextLang);
         }
 
-        // Auto-load user preference on visit
+        // Default setting: ALWAYS boot on English unless a personal preference was explicitly saved before
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'en';
             applyLanguage(savedLang);
