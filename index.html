@@ -36,7 +36,7 @@
             line-height: 1.5;
         }
 
-        /* Barre de Navigation Supérieure */
+        /* Top Navigation Bar */
         nav {
             position: fixed;
             top: 0;
@@ -106,7 +106,7 @@
             color: var(--text-main);
         }
 
-        /* Bouton Langue */
+        /* Language Switcher Button */
         .lang-switcher {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
@@ -124,14 +124,14 @@
             background: rgba(16, 185, 129, 0.1);
         }
 
-        /* Conteneur Principal */
+        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 120px 20px 60px 20px;
         }
 
-        /* Section Hero */
+        /* Hero Section */
         .hero {
             display: grid;
             grid-template-columns: 1.6fr 1fr;
@@ -224,7 +224,7 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Hero Right - Cadre Photo */
+        /* Hero Right - Avatar Box */
         .hero-right {
             display: flex;
             justify-content: center;
@@ -279,7 +279,7 @@
             font-weight: 600;
         }
 
-        /* Titres de sections */
+        /* Sections */
         section {
             padding: 60px 0;
         }
@@ -295,7 +295,7 @@
             color: var(--accent-color);
         }
 
-        /* Grilles & Cartes */
+        /* Grids & Cards */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -340,7 +340,7 @@
             margin-bottom: 20px;
         }
 
-        /* Section Compétences Horizontale */
+        /* Skills Marquee */
         .skills-marquee {
             display: flex;
             gap: 15px;
@@ -364,7 +364,7 @@
             color: var(--text-muted);
         }
 
-        /* Section Réseaux */
+        /* Social Grid */
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -422,7 +422,7 @@
             font-size: 0.85rem;
         }
 
-        /* Responsive Mobile */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -453,8 +453,8 @@
             </div>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="#projets" data-key="navProjects">Projects</a></li>
-                    <li><a href="#competences" data-key="navSkills">Skills</a></li>
+                    <li><a href="#projects" data-key="navProjects">Projects</a></li>
+                    <li><a href="#skills" data-key="navSkills">Skills</a></li>
                     <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
                 <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
@@ -470,18 +470,22 @@
                     <div class="status-dot"></div> 
                     <span data-key="statusText">Available for commissions / hiring</span>
                 </div>
+                
                 <h1 data-key="heroTitle">Designing <span>High-Performance Experiences</span> on Roblox.</h1>
+                
                 <div class="tags">// Luau Scripting • UI/UX Design • System Architecture</div>
+                
                 <p class="bio" data-key="heroBio">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
+                
                 <div class="hero-buttons">
-                    <a href="#projets" class="btn-primary" data-key="btnWork">View My Work</a>
+                    <a href="#projects" class="btn-primary" data-key="btnWork">View My Work</a>
                     <a href="#contact" class="btn-secondary" data-key="btnConnect">Let's Connect</a>
                 </div>
             </div>
             
             <div class="hero-right">
                 <div class="avatar-box">
-                    <img src="avatar.png" class="main-avatar" alt="Avatar Roblox microb">
+                    <img src="avatar.png" class="main-avatar" alt="Roblox Avatar microb">
                     <div class="avatar-caption">
                         <div class="avatar-name">
                             microb 
@@ -494,7 +498,7 @@
             </div>
         </main>
 
-        <div class="skills-marquee" id="competences">
+        <div class="skills-marquee" id="skills">
             <div class="skill-badge"># Luau</div>
             <div class="skill-badge"># Roblox Studio</div>
             <div class="skill-badge"># UI Design</div>
@@ -504,8 +508,9 @@
             <div class="skill-badge"># OOP (Object-Oriented)</div>
         </div>
 
-        <section id="projets">
+        <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">Featured <span>Projects</span></h2>
+            
             <div class="grid-2">
                 <div class="project-card">
                     <div class="project-info">
@@ -515,6 +520,7 @@
                         <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" data-key="btnMore">Learn More</a>
                     </div>
                 </div>
+                
                 <div class="project-card">
                     <div class="project-info">
                         <div class="project-tag" data-key="project2Tag">[System / UI Architecture]</div>
@@ -528,8 +534,8 @@
 
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
+            
             <div class="social-grid">
-                
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
@@ -554,4 +560,126 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <a href="
+                <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="XIcon.png" class="social-icon" alt="X">
+                        <span class="social-name">X / Twitter</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
+                        <span class="social-name">TikTok</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
+                        <span class="social-name">Twitch</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
+                        <span class="social-name">YouTube</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
+                    <div class="social-left">
+                        <img src="GmailIcon.png" class="social-icon" alt="Email">
+                        <span class="social-name">Email</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p data-key="footerText">microb © 2026 • Developer Portfolio</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                navProjects: "Projects",
+                navSkills: "Skills",
+                navContact: "Contact",
+                statusText: "Available for commissions / hiring",
+                heroTitle: "Designing <span>High-Performance Experiences</span> on Roblox.",
+                heroBio: "Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.",
+                btnWork: "View My Work",
+                btnConnect: "Let's Connect",
+                projectsTitle: "Featured <span>Projects</span>",
+                project1Tag: "[Simulation / City-Life]",
+                project1Desc: "An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.",
+                project2Tag: "[System / UI Architecture]",
+                project2Title: "Dynamic UI Frameworks",
+                project2Desc: "Developing responsive, modern UI design frameworks completely handled via Luau scripts. Fully optimized network replication for seamless framerates.",
+                btnMore: "Learn More",
+                btnExplore: "Explore",
+                contactTitle: "Get In <span>Touch</span>",
+                footerText: "microb © 2026 • Developer Portfolio"
+            },
+            fr: {
+                navProjects: "Projets",
+                navSkills: "Compétences",
+                navContact: "Contact",
+                statusText: "Disponible pour des projets",
+                heroTitle: "Concepteur d'<span>Expériences Hautes Performances</span> sur Roblox.",
+                heroBio: "Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.",
+                btnWork: "Voir mon travail",
+                btnConnect: "Me connecter",
+                projectsTitle: "Projets <span>Majeurs</span>",
+                project1Tag: "[Simulation / Ville]",
+                project1Desc: "Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.",
+                project2Tag: "[Système / Interface]",
+                project2Title: "Architecture UI & Modules Dynamiques",
+                project2Desc: "Développement de frameworks d'interfaces utilisateur modernes et réactifs sous Luau. Optimisation complète des scripts serveurs et clients pour un framerate maximal.",
+                btnMore: "En savoir plus",
+                btnExplore: "Découvrir",
+                contactTitle: "Discutons <span>Ensemble</span>",
+                footerText: "microb © 2026 • Portfolio de Développeur"
+            }
+        };
+
+        function applyLanguage(lang) {
+            const body = document.body;
+            const btn = document.getElementById('langBtn');
+            
+            body.setAttribute('lang', lang);
+            btn.innerText = lang === 'en' ? 'FR' : 'EN';
+            
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        function toggleLanguage() {
+            const currentLang = document.body.getAttribute('lang') || 'en';
+            const nextLang = currentLang === 'en' ? 'fr' : 'en';
+            applyLanguage(nextLang);
+        }
+
+        // Auto-load user preference on visit
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-lang') || 'en';
+            applyLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
