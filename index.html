@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tf0u3lik — Portfolio de Développeur</title>
+    <title>microb — Portfolio de Développeur</title>
     <style>
         :root {
-            /* Ta couleur exacte demandée pour remplacer le bleu bizarre */
             --bg-color: #081308; 
             --bg-overlay: rgba(8, 19, 8, 0.85); 
             --card-bg: rgba(15, 30, 15, 0.65);
-            --accent-color: #10b981; /* Un beau vert vibrant */
+            --accent-color: #10b981; 
             --accent-glow: rgba(16, 185, 129, 0.25);
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
@@ -239,12 +238,19 @@
             gap: 6px;
         }
 
+        .avatar-tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
         .avatar-role {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--accent-color);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-top: 4px;
+            margin-top: 6px;
+            font-weight: 600;
         }
 
         /* Titres de sections */
@@ -332,7 +338,7 @@
             color: var(--text-muted);
         }
 
-        /* Section Réseaux Modifiée avec Icônes */
+        /* Section Réseaux */
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -414,7 +420,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <div class="logo-dot"></div> tf0u3lik 
+                <div class="logo-dot"></div> microb 
                 <img src="VerifiedIcon.png" class="verified-badge" alt="Verified">
             </div>
             <ul class="nav-links">
@@ -438,18 +444,19 @@
                 <p class="bio">Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.</p>
                 <div class="hero-buttons">
                     <a href="#projets" class="btn-primary">Voir mon travail</a>
-                    <a href="#contact" class="btn-secondary">Me connecter</a>
+                    <a href="#contact" class="btn-secondary">Me contacter</a>
                 </div>
             </div>
             
             <div class="hero-right">
                 <div class="avatar-box">
-                    <img src="avatar.png" class="main-avatar" alt="Avatar Roblox tf0u3lik">
+                    <img src="avatar.png" class="main-avatar" alt="Avatar Roblox microb">
                     <div class="avatar-caption">
                         <div class="avatar-name">
-                            tf0u3lik 
+                            microb 
                             <img src="VerifiedIcon.png" class="verified-badge" alt="Verified">
                         </div>
+                        <div class="avatar-tag">@tfou3iik</div>
                         <div class="avatar-role">Lead Developer</div>
                     </div>
                 </div>
@@ -490,7 +497,7 @@
             </div>
         </section>
 
-        <!-- Section Contact / Réseaux avec toutes tes icônes de image_d4c901.png -->
+        <!-- Section Contact / Réseaux -->
         <section id="contact">
             <h2 class="section-title">Discutons <span>Ensemble</span></h2>
             <div class="social-grid">
@@ -572,7 +579,7 @@
 
         <!-- Pied de page -->
         <footer>
-            <p>tf0u3lik © 2026 • Portfolio de Développeur</p>
+            <p>microb © 2026 • Portfolio de Développeur</p>
         </footer>
 
     </div>
