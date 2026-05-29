@@ -552,6 +552,7 @@
         .social-name {
             font-weight: 600;
             font-size: 0.95rem;
+            color: var(--text-main); /* Standard clean white look preserved */
         }
 
         .social-handle {
@@ -664,7 +665,7 @@
             </div>
         </main>
 
-        <!-- Projects Section (Updated to Single Game Banner style) -->
+        <!-- Projects Section (Updated with corrected statistics) -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">Active <span>Projects</span></h2>
             
@@ -677,9 +678,9 @@
                     <h3>Wydad Vs Raja (Stadium Donor)</h3>
                     
                     <div class="game-stats-row">
-                        <div class="stat-badge"><span data-key="statLikes">Likes:</span> 92%</div>
-                        <div class="stat-badge"><span data-key="statVisits">Visits:</span> 250K+</div>
-                        <div class="stat-badge"><span data-key="statActive">Active:</span> 120+</div>
+                        <div class="stat-badge"><span data-key="statLikes">Likes:</span> 70%</div>
+                        <div class="stat-badge"><span data-key="statVisits">Visits:</span> 8K+</div>
+                        <div class="stat-badge"><span data-key="statActive">Active:</span> 1+</div>
                     </div>
 
                     <p data-key="gameProjectDesc">An immersive stadium experience featuring tactical combat, team dynamics, fully scripted UI frameworks, and fluid user systems built around the legendary Moroccan derby clash.</p>
@@ -765,7 +766,7 @@
                     <div class="social-left">
                         <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
                         <div class="social-details">
-                            <span class="social-name" style="color: #e2e8f0;">Roblox</span>
+                            <span class="social-name">Roblox</span>
                             <span class="social-handle">@tfou3iik</span>
                         </div>
                     </div>
@@ -777,7 +778,7 @@
                     <div class="social-left">
                         <img src="DiscordIcon.png" class="social-icon" alt="Discord">
                         <div class="social-details">
-                            <span class="social-name" style="color: #5865F2;">Discord</span>
+                            <span class="social-name">Discord</span>
                             <span class="social-handle">@tf0u3l1k</span>
                         </div>
                     </div>
@@ -789,7 +790,7 @@
                     <div class="social-left">
                         <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
                         <div class="social-details">
-                            <span class="social-name" style="color: #f3f4f6;">GitHub</span>
+                            <span class="social-name">GitHub</span>
                             <span class="social-handle">@tf0u3lik</span>
                         </div>
                     </div>
@@ -801,7 +802,7 @@
                     <div class="social-left">
                         <img src="XIcon.png" class="social-icon" alt="X">
                         <div class="social-details">
-                            <span class="social-name" style="color: #e2e8f0;">X / Twitter</span>
+                            <span class="social-name">X / Twitter</span>
                             <span class="social-handle">@tf0u3Iik</span>
                         </div>
                     </div>
@@ -813,7 +814,7 @@
                     <div class="social-left">
                         <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
                         <div class="social-details">
-                            <span class="social-name" style="color: #ff0050;">TikTok</span>
+                            <span class="social-name">TikTok</span>
                             <span class="social-handle">@tradernemya_sab</span>
                         </div>
                     </div>
@@ -825,7 +826,7 @@
                     <div class="social-left">
                         <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
                         <div class="social-details">
-                            <span class="social-name" style="color: #9146FF;">Twitch</span>
+                            <span class="social-name">Twitch</span>
                             <span class="social-handle">@tf0u31ik</span>
                         </div>
                     </div>
@@ -837,7 +838,7 @@
                     <div class="social-left">
                         <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
                         <div class="social-details">
-                            <span class="social-name" style="color: #FF0000;">YouTube</span>
+                            <span class="social-name">YouTube</span>
                             <span class="social-handle">@tf0u31k</span>
                         </div>
                     </div>
@@ -849,7 +850,7 @@
                     <div class="social-left">
                         <img src="GmailIcon.png" class="social-icon" alt="Email">
                         <div class="social-details">
-                            <span class="social-name" style="color: #ea4335;">Email</span>
+                            <span class="social-name">Email</span>
                             <span class="social-handle">enfantdunetpro@gmail.com</span>
                         </div>
                     </div>
@@ -947,7 +948,6 @@
 
         // Gallery Filter System Logic
         function filterGallery(category) {
-            // Update active state class on filter buttons
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
