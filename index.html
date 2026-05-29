@@ -479,6 +479,7 @@
 </head>
 <body>
 
+    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -487,11 +488,12 @@
             </div>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="#work" data-key="navWork">Work</a></li>
                     <li><a href="#projects" data-key="navProjects">Projects</a></li>
+                    <li><a href="#work" data-key="navWork">Work</a></li>
                     <li><a href="#skills" data-key="navSkills">Skills</a></li>
                     <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
+                <!-- Language Toggle Button -->
                 <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
             </div>
         </div>
@@ -499,6 +501,7 @@
 
     <div class="container">
         
+        <!-- Hero Section -->
         <main class="hero">
             <div class="hero-left">
                 <div class="status">
@@ -513,7 +516,7 @@
                 <p class="bio" data-key="heroBio">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
                 
                 <div class="hero-buttons">
-                    <a href="#work" class="btn-primary" data-key="btnWork">View My Work</a>
+                    <a href="#projects" class="btn-primary" data-key="btnWork">View My Work</a>
                     <a href="#contact" class="btn-secondary" data-key="btnConnect">Contact Me</a>
                 </div>
             </div>
@@ -533,35 +536,7 @@
             </div>
         </main>
 
-        <div class="skills-marquee" id="skills">
-            <div class="skill-badge"># Luau</div>
-            <div class="skill-badge"># Roblox Studio</div>
-            <div class="skill-badge"># UI Design</div>
-            <div class="skill-badge"># Systems Architecture</div>
-            <div class="skill-badge"># DataStore</div>
-            <div class="skill-badge"># Git</div>
-            <div class="skill-badge"># OOP (Object-Oriented)</div>
-        </div>
-
-        <section id="work">
-            <h2 class="section-title" data-key="workTitle">Module <span>Gallery</span></h2>
-            <div class="showcase-grid">
-                <div class="showcase-card">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="Wydad VS Raja.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tag">[UI/UX & Systems]</div>
-                        <h3 data-key="showcase1Title">Main Menu UI System</h3>
-                        <p data-key="showcase1Desc">An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">Featured <span>Projects</span></h2>
             
@@ -586,10 +561,61 @@
             </div>
         </section>
 
+        <!-- Showcase / Work Gallery Section -->
+        <section id="work">
+            <h2 class="section-title" data-key="workTitle">Module <span>Gallery</span></h2>
+            <div class="showcase-grid">
+                
+                <!-- Card 1: UI System Menu -->
+                <div class="showcase-card">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="Wydad VS Raja.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag">[UI/UX & Systems]</div>
+                        <h3 data-key="showcase1Title">Main Menu UI System</h3>
+                        <p data-key="showcase1Desc">An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Combat & Movement Animations (New) -->
+                <div class="showcase-card">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="CombatAnimation.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag">[Animation]</div>
+                        <h3 data-key="showcase2Title">Combat & Movement System</h3>
+                        <p data-key="showcase2Desc">Fluid custom animations featuring combat stance, aggressive machete running cycles, and smooth crouching behaviors designed for tactical urban engagement.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Marquee -->
+        <div class="skills-marquee" id="skills">
+            <div class="skill-badge"># Luau</div>
+            <div class="skill-badge"># Roblox Studio</div>
+            <div class="skill-badge"># UI Design</div>
+            <div class="skill-badge"># Systems Architecture</div>
+            <div class="skill-badge"># DataStore</div>
+            <div class="skill-badge"># Git</div>
+            <div class="skill-badge"># OOP (Object-Oriented)</div>
+        </div>
+
+        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
             
             <div class="social-grid">
+                <!-- Roblox -->
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
@@ -598,7 +624,9 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Discord -->
                 <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
+                    <div class="nav-links"></div>
                     <div class="social-left">
                         <img src="DiscordIcon.png" class="social-icon" alt="Discord">
                         <span class="social-name">Discord</span>
@@ -606,6 +634,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- GitHub -->
                 <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
@@ -614,6 +643,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- X -->
                 <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="XIcon.png" class="social-icon" alt="X">
@@ -622,6 +652,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
@@ -630,6 +661,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Twitch -->
                 <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
@@ -638,6 +670,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- YouTube -->
                 <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
@@ -646,6 +679,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Email -->
                 <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
                     <div class="social-left">
                         <img src="GmailIcon.png" class="social-icon" alt="Email">
@@ -656,17 +690,19 @@
             </div>
         </section>
 
+        <!-- Footer -->
         <footer>
             <p data-key="footerText">microb © 2026 • Developer Portfolio</p>
         </footer>
 
     </div>
 
+    <!-- Interactive Language Control Script -->
     <script>
         const translations = {
             en: {
-                navWork: "Work",
                 navProjects: "Projects",
+                navWork: "Work",
                 navSkills: "Skills",
                 navContact: "Contact",
                 statusText: "Available for commissions / hiring",
@@ -677,6 +713,8 @@
                 workTitle: "Module <span>Gallery</span>",
                 showcase1Title: "Main Menu UI System",
                 showcase1Desc: "An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.",
+                showcase2Title: "Combat & Movement System",
+                showcase2Desc: "Fluid custom animations featuring combat stance, aggressive machete running cycles, and smooth crouching behaviors designed for tactical urban engagement.",
                 projectsTitle: "Featured <span>Projects</span>",
                 project1Tag: "[Simulation / City-Life]",
                 project1Desc: "An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.",
@@ -689,8 +727,8 @@
                 footerText: "microb © 2026 • Developer Portfolio"
             },
             fr: {
-                navWork: "Galerie",
                 navProjects: "Projets",
+                navWork: "Galerie",
                 navSkills: "Compétences",
                 navContact: "Contact",
                 statusText: "Disponible pour des projets",
@@ -701,6 +739,8 @@
                 workTitle: "Galerie de <span>Modules</span>",
                 showcase1Title: "Système UI Menu Principal",
                 showcase1Desc: "Un menu principal de stade immersif comprenant la sélection interactive d'équipe, l'affichage dynamique des contrôles et une boutique de Game Passes intégrée.",
+                showcase2Title: "Système de Combat & Mouvements",
+                showcase2Desc: "Animations personnalisées fluides comprenant les postures de combat, les cycles de course agressifs avec machette et les mouvements accroupis (crouch) fluides.",
                 projectsTitle: "Projets <span>Majeurs</span>",
                 project1Tag: "[Simulation / Ville]",
                 project1Desc: "Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.",
