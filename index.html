@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>microb — Portfolio de Développeur</title>
-    <!-- Ton icône personnalisée pour remplacer la planète de l'onglet -->
+    <title>microb — Developer Portfolio</title>
     <link rel="icon" type="image/png" href="microb.png">
     
     <style>
@@ -37,7 +36,7 @@
             line-height: 1.5;
         }
 
-        /* Barre de Navigation Supérieure */
+        /* Top Navigation Bar */
         nav {
             position: fixed;
             top: 0;
@@ -81,6 +80,12 @@
             vertical-align: middle;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
         .nav-links {
             display: flex;
             gap: 25px;
@@ -101,14 +106,32 @@
             color: var(--text-main);
         }
 
-        /* Conteneur Principal */
+        /* Language Switcher Button */
+        .lang-switcher {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-switcher:hover {
+            border-color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 120px 20px 60px 20px;
         }
 
-        /* Section Hero */
+        /* Hero Section */
         .hero {
             display: grid;
             grid-template-columns: 1.6fr 1fr;
@@ -201,7 +224,7 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Hero Right - Cadre Photo */
+        /* Hero Right - Avatar Box */
         .hero-right {
             display: flex;
             justify-content: center;
@@ -256,7 +279,7 @@
             font-weight: 600;
         }
 
-        /* Titres de sections */
+        /* Sections */
         section {
             padding: 60px 0;
         }
@@ -272,7 +295,7 @@
             color: var(--accent-color);
         }
 
-        /* Grilles & Cartes */
+        /* Grids & Cards */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -317,7 +340,7 @@
             margin-bottom: 20px;
         }
 
-        /* Section Compétences Horizontale */
+        /* Skills Marquee */
         .skills-marquee {
             display: flex;
             gap: 15px;
@@ -341,7 +364,7 @@
             color: var(--text-muted);
         }
 
-        /* Section Réseaux */
+        /* Social Grid */
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -399,7 +422,13 @@
             font-size: 0.85rem;
         }
 
-        /* Responsive Mobile */
+        /* Multi-language Visibility Handling */
+        [lang="fr"] .lang-en,
+        [lang="en"] .lang-fr {
+            display: none !important;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -414,46 +443,73 @@
             .grid-2 {
                 grid-template-columns: 1fr;
             }
+            .nav-right {
+                gap: 15px;
+            }
         }
     </style>
 </head>
-<body>
+<body lang="en">
 
-    <!-- Barre de navigation -->
+    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-dot"></div> microb 
                 <img src="VerifiedIcon.png" class="verified-badge" alt="Verified">
             </div>
-            <ul class="nav-links">
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li>
+                        <a href="#projects" class="lang-en">Projects</a>
+                        <a href="#projects" class="lang-fr">Projets</a>
+                    </li>
+                    <li>
+                        <a href="#skills" class="lang-en">Skills</a>
+                        <a href="#skills" class="lang-fr">Compétences</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="lang-en">Contact</a>
+                        <a href="#contact" class="lang-fr">Contact</a>
+                    </li>
+                </ul>
+                <!-- Language Toggle Button -->
+                <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
+            </div>
         </div>
     </nav>
 
     <div class="container">
         
-        <!-- Section Hero principal -->
+        <!-- Hero Section -->
         <main class="hero">
             <div class="hero-left">
                 <div class="status">
-                    <div class="status-dot"></div> Disponible pour des projets
+                    <div class="status-dot"></div> 
+                    <span class="lang-en">Available for commissions / hiring</span>
+                    <span class="lang-fr">Disponible pour des projets</span>
                 </div>
-                <h1>Concepteur d'<span>Expériences Hautes Performances</span> sur Roblox.</h1>
+                
+                <h1 class="lang-en">Designing <span>High-Performance Experiences</span> on Roblox.</h1>
+                <h1 class="lang-fr">Concepteur d'<span>Expériences Hautes Performances</span> sur Roblox.</h1>
+                
                 <div class="tags">// Luau Scripting • UI/UX Design • System Architecture</div>
-                <p class="bio">Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.</p>
+                
+                <p class="bio lang-en">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
+                <p class="bio lang-fr">Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.</p>
+                
                 <div class="hero-buttons">
-                    <a href="#projets" class="btn-primary">Voir mon travail</a>
-                    <a href="#contact" class="btn-secondary">Me connecter</a>
+                    <a href="#projects" class="btn-primary lang-en">View My Work</a>
+                    <a href="#projects" class="btn-primary lang-fr">Voir mon travail</a>
+                    
+                    <a href="#contact" class="btn-secondary lang-en">Let's Connect</a>
+                    <a href="#contact" class="btn-secondary lang-fr">Me connecter</a>
                 </div>
             </div>
             
             <div class="hero-right">
                 <div class="avatar-box">
-                    <img src="avatar.png" class="main-avatar" alt="Avatar Roblox microb">
+                    <img src="avatar.png" class="main-avatar" alt="Roblox Avatar microb">
                     <div class="avatar-caption">
                         <div class="avatar-name">
                             microb 
@@ -466,45 +522,62 @@
             </div>
         </main>
 
-        <!-- Liste des tags/outils défilante -->
-        <div class="skills-marquee" id="competences">
+        <!-- Skills Marquee -->
+        <div class="skills-marquee" id="skills">
             <div class="skill-badge"># Luau</div>
             <div class="skill-badge"># Roblox Studio</div>
             <div class="skill-badge"># UI Design</div>
             <div class="skill-badge"># Systems Architecture</div>
             <div class="skill-badge"># DataStore</div>
             <div class="skill-badge"># Git</div>
-            <div class="skill-badge"># OOP (Objets)</div>
+            <div class="skill-badge"># OOP (Object-Oriented)</div>
         </div>
 
-        <!-- Section Projets Principaux -->
-        <section id="projets">
-            <h2 class="section-title">Projets <span>Majeurs</span></h2>
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title lang-en">Featured <span>Projects</span></h2>
+            <h2 class="section-title lang-fr">Projets <span>Majeurs</span></h2>
+            
             <div class="grid-2">
                 <div class="project-card">
                     <div class="project-info">
-                        <div class="project-tag">[Simulation / Ville]</div>
+                        <div class="project-tag lang-en">[Simulation / City-Life]</div>
+                        <div class="project-tag lang-fr">[Simulation / Ville]</div>
+                        
                         <h3>The Urblox: Life in the City</h3>
-                        <p>Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.</p>
-                        <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;">En savoir plus</a>
+                        
+                        <p class="lang-en">An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.</p>
+                        <p class="lang-fr">Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.</p>
+                        
+                        <a href="#" class="btn-secondary lang-en" style="padding: 6px 16px; font-size: 0.85rem;">Learn More</a>
+                        <a href="#" class="btn-secondary lang-fr" style="padding: 6px 16px; font-size: 0.85rem;">En savoir plus</a>
                     </div>
                 </div>
+                
                 <div class="project-card">
                     <div class="project-info">
-                        <div class="project-tag">[Système / Interface]</div>
-                        <h3>Architecture UI & Modules Dynamiques</h3>
-                        <p>Développement de frameworks d'interfaces utilisateur modernes et réactifs sous Luau. Optimisation complète des scripts serveurs et clients pour un framerate maximal.</p>
-                        <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;">Découvrir</a>
+                        <div class="project-tag lang-en">[System / UI Architecture]</div>
+                        <div class="project-tag lang-fr">[Système / Interface]</div>
+                        
+                        <h3 class="lang-en">Dynamic UI Frameworks</h3>
+                        <h3 class="lang-fr">Architecture UI & Modules Dynamiques</h3>
+                        
+                        <p class="lang-en">Developing responsive, modern UI design frameworks completely handled via Luau scripts. Fully optimized network replication for seamless framerates.</p>
+                        <p class="lang-fr">Développement de frameworks d'interfaces utilisateur modernes et réactifs sous Luau. Optimisation complète des scripts serveurs et clients pour un framerate maximal.</p>
+                        
+                        <a href="#" class="btn-secondary lang-en" style="padding: 6px 16px; font-size: 0.85rem;">Explore</a>
+                        <a href="#" class="btn-secondary lang-fr" style="padding: 6px 16px; font-size: 0.85rem;">Découvrir</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section Contact / Réseaux -->
+        <!-- Contact Section -->
         <section id="contact">
-            <h2 class="section-title">Discutons <span>Ensemble</span></h2>
+            <h2 class="section-title lang-en">Get In <span>Touch</span></h2>
+            <h2 class="section-title lang-fr">Discutons <span>Ensemble</span></h2>
+            
             <div class="social-grid">
-                
                 <!-- Roblox -->
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
                     <div class="social-left">
@@ -532,7 +605,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- X (Twitter) -->
+                <!-- X -->
                 <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="XIcon.png" class="social-icon" alt="X">
@@ -576,16 +649,42 @@
                     </div>
                     <span class="social-arrow">↗</span>
                 </a>
-
             </div>
         </section>
 
-        <!-- Pied de page -->
+        <!-- Footer -->
         <footer>
-            <p>microb © 2026 • Portfolio de Développeur</p>
+            <p class="lang-en">microb © 2026 • Developer Portfolio</p>
+            <p class="lang-fr">microb © 2026 • Portfolio de Développeur</p>
         </footer>
 
     </div>
 
+    <!-- Interactive Language Control Script -->
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const btn = document.getElementById('langBtn');
+            
+            if (body.getAttribute('lang') === 'en') {
+                body.setAttribute('lang', 'fr');
+                btn.innerText = 'EN';
+                localStorage.setItem('preferred-lang', 'fr');
+            } else {
+                body.setAttribute('lang', 'en');
+                btn.innerText = 'FR';
+                localStorage.setItem('preferred-lang', 'en');
+            }
+        }
+
+        // Auto-load user preference on visit
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-lang');
+            if (savedLang === 'fr') {
+                document.body.setAttribute('lang', 'fr');
+                document.getElementById('langBtn').innerText = 'EN';
+            }
+        });
+    </script>
 </body>
 </html>
