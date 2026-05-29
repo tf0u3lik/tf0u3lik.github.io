@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tf0u3lik — Portfolio de Développeur</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --accent-color: #3b82f6;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.05em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Grille de projets / modules */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1xl));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #374151;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .card-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact / Footer */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            background: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--text-main);
+            border-color: var(--accent-color);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Top / Hero -->
+        <header>
+            <div class="badge">Disponible pour des projets</div>
+            <h1>tf0u3lik</h1>
+            <p class="subtitle">Développeur Roblox spécialisé en scripting Luau, UI/UX design et architecture de systèmes. J'adore concevoir des interfaces propres et des mécaniques de jeu fluides.</p>
+            <a href="#contact" class="btn">Me contacter</a>
+        </header>
+
+        <!-- Section Projets Majeurs -->
+        <section>
+            <h2>Projets Principaux</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-tag">[Simulation / Urbain]</div>
+                    <h3>The Urblox: Life in the City</h3>
+                    <p>Un jeu de simulation urbaine ambitieux inspiré des esthétiques rétro de la culture urbaine. Développement intégral des scripts, des systèmes d'interaction et de l'UI/UX de la ville.</p>
+                    <a href="#" class="card-link">Voir le projet →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Galerie de Systèmes (Comme sur le site de Stadryx) -->
+        <section>
+            <h2>Galerie de Modules & Systèmes</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-tag">[UI/UX / Animation]</div>
+                    <h3>Systèmes de GUI Modernes</h3>
+                    <p>Création d'interfaces utilisateur propres, adaptatives et hautement optimisées avec des animations fluides en Luau pour une expérience immersive.</p>
+                    <a href="#" class="card-link">Regarder la démo →</a>
+                </div>
+                <div class="card">
+                    <div class="card-tag">[Système / Architecture]</div>
+                    <h3>Scripts & Mécaniques de Jeu</h3>
+                    <p>Développement de systèmes modulaires robustes : gestion de données, inventaires dynamiques et mécaniques de gameplay sur mesure.</p>
+                    <a href="#" class="card-link">Voir le code →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contact">
+            <h2>Réseaux & Contact</h2>
+            <div class="social-links">
+                <a href="https://github.com/tf0u3lik" target="_blank">GitHub</a>
+                <a href="#" target="_blank">Discord</a>
+                <a href="#" target="_blank">Roblox</a>
+                <a href="#" target="_blank">TikTok</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>tf0u3lik © 2026. Fait avec passion.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
