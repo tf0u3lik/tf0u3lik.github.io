@@ -6,9 +6,10 @@
     <title>tf0u3lik — Portfolio de Développeur</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #111827;
+            --bg-overlay: rgba(11, 15, 25, 0.88); /* Assombrit le fond pour la lisibilité */
+            --card-bg: rgba(17, 24, 39, 0.75);
             --accent-color: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.3);
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --border-color: #1f2937;
@@ -18,236 +19,474 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
+            /* Utilisation de l'image ChatGPT Image 29 mai 2026, 14_39_52.png */
+            background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('background.png') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
+            line-height: 1.5;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Header / Hero Section */
-        header {
-            margin-bottom: 60px;
+        /* Barre de Navigation Supérieure */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 40px;
+            z-index: 1000;
         }
 
-        .badge {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-color);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        h1 {
-            font-size: 2.8rem;
+        .logo {
             font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.05em;
-        }
-
-        .subtitle {
             font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            max-width: 600px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .btn {
-            display: inline-block;
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Conteneur Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 60px 20px;
+        }
+
+        /* Section Hero (Inspirée de image_d782e0.jpg) */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 40px;
+            align-items: center;
+            min-height: 70vh;
+            margin-bottom: 80px;
+        }
+
+        .hero-left .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 25px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .hero-left .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+        }
+
+        .hero-left h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .hero-left h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero-left .tags {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: monospace;
+            margin-bottom: 25px;
+        }
+
+        .hero-left .bio {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 620px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
             background-color: var(--accent-color);
             color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 12px 28px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: background 0.2s;
         }
 
-        .btn:hover {
+        .btn-primary:hover {
             background-color: #2563eb;
         }
 
-        /* Sections */
-        section {
-            margin-bottom: 60px;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        /* Grille de projets / modules */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1xl));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            padding: 12px 28px;
             border-radius: 8px;
-            padding: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            transition: background 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Right - Cadre Photo (Inspiré de image_d782e0.jpg) */
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-box {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Image d'avatar issue de Gemini_Generated_Image_uummyduummyduumm.jpg */
+        .avatar-box img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .avatar-caption {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .avatar-name {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .avatar-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 2px;
+        }
+
+        /* Titres de sections généraux */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span {
+            color: var(--accent-color);
+        }
+
+        /* Grilles & Cartes (Style inspiré de image_d77fb4.png & image_d77f5b.jpg) */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
             transition: transform 0.2s, border-color 0.2s;
         }
 
-        .card:hover {
+        .project-card:hover {
             transform: translateY(-4px);
             border-color: #374151;
         }
 
-        .card-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.05em;
+        .project-info {
+            padding: 30px;
         }
 
-        .card h3 {
-            font-size: 1.25rem;
+        .project-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 10px;
         }
 
-        .card p {
+        .project-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .project-info p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        .card-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .card-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Contact / Footer */
-        .social-links {
+        /* Section Compétences Horizontale (Inspirée de image_d782bb.png) */
+        .skills-marquee {
             display: flex;
             gap: 15px;
-            flex-wrap: wrap;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin-bottom: 40px;
+            white-space: nowrap;
         }
 
-        .social-links a {
-            color: var(--text-muted);
-            text-decoration: none;
+        .skills-marquee::-webkit-scrollbar {
+            display: none;
+        }
+
+        .skill-badge {
             background: var(--card-bg);
-            padding: 10px 20px;
-            border-radius: 6px;
             border: 1px solid var(--border-color);
-            font-size: 0.95rem;
-            transition: all 0.2s;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
         }
 
-        .social-links a:hover {
+        /* Section Réseaux (Inspirée de image_d77f00.png) */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-decoration: none;
             color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .social-card:hover {
             border-color: var(--accent-color);
             background: rgba(59, 130, 246, 0.05);
         }
 
+        .social-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .social-arrow {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
         footer {
-            margin-top: 80px;
+            margin-top: 60px;
+            padding: 30px 0;
             text-align: center;
+            border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 30px;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-left h1 {
+                font-size: 2.5rem;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Barre de navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-dot"></div> tf0u3lik
+            </div>
+            <ul class="nav-links">
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         
-        <!-- Top / Hero -->
-        <header>
-            <div class="badge">Disponible pour des projets</div>
-            <h1>tf0u3lik</h1>
-            <p class="subtitle">Développeur Roblox spécialisé en scripting Luau, UI/UX design et architecture de systèmes. J'adore concevoir des interfaces propres et des mécaniques de jeu fluides.</p>
-            <a href="#contact" class="btn">Me contacter</a>
-        </header>
+        <!-- Section Hero principal -->
+        <main class="hero">
+            <div class="hero-left">
+                <div class="status">
+                    <div class="status-dot"></div> Disponible pour des projets
+                </div>
+                <h1>Concepteur d'<span>Expériences Hautes Performances</span> sur Roblox.</h1>
+                <div class="tags">// Luau Scripting • UI/UX Design • System Architecture</div>
+                <p class="bio">Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.</p>
+                <div class="hero-buttons">
+                    <a href="#projets" class="btn-primary">Voir mon travail</a>
+                    <a href="#contact" class="btn-secondary">Me contacter</a>
+                </div>
+            </div>
+            
+            <div class="hero-right">
+                <div class="avatar-box">
+                    <!-- Photo de ton avatar Roblox -->
+                    <img src="avatar.png" alt="Avatar Roblox tf0u3lik">
+                    <div class="avatar-caption">
+                        <div class="avatar-name">tf0u3lik</div>
+                        <div class="avatar-role">Lead Developer</div>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-        <!-- Section Projets Majeurs -->
-        <section>
-            <h2>Projets Principaux</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-tag">[Simulation / Urbain]</div>
-                    <h3>The Urblox: Life in the City</h3>
-                    <p>Un jeu de simulation urbaine ambitieux inspiré des esthétiques rétro de la culture urbaine. Développement intégral des scripts, des systèmes d'interaction et de l'UI/UX de la ville.</p>
-                    <a href="#" class="card-link">Voir le projet →</a>
+        <!-- Liste des tags/outils défilante -->
+        <div class="skills-marquee" id="competences">
+            <div class="skill-badge"># Luau</div>
+            <div class="skill-badge"># Roblox Studio</div>
+            <div class="skill-badge"># UI Design</div>
+            <div class="skill-badge"># Systems Architecture</div>
+            <div class="skill-badge"># DataStore</div>
+            <div class="skill-badge"># Git</div>
+            <div class="skill-badge"># OOP (Objets)</div>
+        </div>
+
+        <!-- Section Projets Principaux -->
+        <section id="projets">
+            <h2 class="section-title">Projets <span>Majeurs</span></h2>
+            <div class="grid-2">
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="project-tag">[Simulation / Ville]</div>
+                        <h3>The Urblox: Life in the City</h3>
+                        <p>Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.</p>
+                        <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="project-tag">[Système / Interface]</div>
+                        <h3>Architecture UI & Modules Dynamiques</h3>
+                        <p>Développement de frameworks d'interfaces utilisateur modernes et réactifs sous Luau. Optimisation complète des scripts serveurs et clients pour un framerate maximal.</p>
+                        <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;">Découvrir</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section Galerie de Systèmes (Comme sur le site de Stadryx) -->
-        <section>
-            <h2>Galerie de Modules & Systèmes</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-tag">[UI/UX / Animation]</div>
-                    <h3>Systèmes de GUI Modernes</h3>
-                    <p>Création d'interfaces utilisateur propres, adaptatives et hautement optimisées avec des animations fluides en Luau pour une expérience immersive.</p>
-                    <a href="#" class="card-link">Regarder la démo →</a>
-                </div>
-                <div class="card">
-                    <div class="card-tag">[Système / Architecture]</div>
-                    <h3>Scripts & Mécaniques de Jeu</h3>
-                    <p>Développement de systèmes modulaires robustes : gestion de données, inventaires dynamiques et mécaniques de gameplay sur mesure.</p>
-                    <a href="#" class="card-link">Voir le code →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Contact -->
+        <!-- Section Contact / Réseaux -->
         <section id="contact">
-            <h2>Réseaux & Contact</h2>
-            <div class="social-links">
-                <a href="https://github.com/tf0u3lik" target="_blank">GitHub</a>
-                <a href="#" target="_blank">Discord</a>
-                <a href="#" target="_blank">Roblox</a>
-                <a href="#" target="_blank">TikTok</a>
+            <h2 class="section-title">Discutons <span>Ensemble</span></h2>
+            <div class="social-grid">
+                <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
+                    <span class="social-name">GitHub</span>
+                    <span class="social-arrow">↗</span>
+                </a>
+                <a href="#" target="_blank" class="social-card">
+                    <span class="social-name">Roblox</span>
+                    <span class="social-arrow">↗</span>
+                </a>
+                <a href="#" target="_blank" class="social-card">
+                    <span class="social-name">Discord</span>
+                    <span class="social-arrow">↗</span>
+                </a>
+                <a href="#" target="_blank" class="social-card">
+                    <span class="social-name">TikTok</span>
+                    <span class="social-arrow">↗</span>
+                </a>
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- Pied de page -->
         <footer>
-            <p>tf0u3lik © 2026. Fait avec passion.</p>
+            <p>tf0u3lik © 2026 • Portfolio de Développeur</p>
         </footer>
 
     </div>
