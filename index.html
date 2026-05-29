@@ -552,7 +552,7 @@
         .social-name {
             font-weight: 600;
             font-size: 0.95rem;
-            color: var(--text-main); /* Standard clean white look preserved */
+            color: var(--text-main);
         }
 
         .social-handle {
@@ -606,9 +606,8 @@
         }
     </style>
 </head>
-<body>
+<body id="home">
 
-    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -617,12 +616,11 @@
             </div>
             <div class="nav-right">
                 <ul class="nav-links">
+                    <li><a href="#home" data-key="navHome">Home</a></li>
                     <li><a href="#projects" data-key="navProjects">Projects</a></li>
                     <li><a href="#work" data-key="navWork">Work</a></li>
-                    <li><a href="#skills" data-key="navSkills">Skills</a></li>
                     <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
-                <!-- Language Toggle Button -->
                 <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
             </div>
         </div>
@@ -630,7 +628,6 @@
 
     <div class="container">
         
-        <!-- Hero Section -->
         <main class="hero">
             <div class="hero-left">
                 <div class="status">
@@ -665,7 +662,6 @@
             </div>
         </main>
 
-        <!-- Projects Section (Updated with corrected statistics) -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">Active <span>Projects</span></h2>
             
@@ -692,12 +688,10 @@
             </div>
         </section>
 
-        <!-- Showcase / Work Gallery Section -->
         <section id="work">
             <div class="showcase-header">
                 <h2 class="section-title" data-key="workTitle">Module <span>Gallery</span></h2>
                 
-                <!-- Filter tabs by specific Game Projects -->
                 <div class="filter-tabs">
                     <button class="filter-btn active" onclick="filterGallery('all')" data-key="filterAll">All</button>
                     <button class="filter-btn" onclick="filterGallery('wydad-raja')">Wydad Vs Raja</button>
@@ -706,7 +700,6 @@
 
             <div class="showcase-grid" id="galleryGrid">
                 
-                <!-- Card 1: UI System Menu -->
                 <div class="showcase-card" data-game="wydad-raja">
                     <div class="video-wrapper">
                         <video controls preload="metadata">
@@ -724,7 +717,6 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Combat & Movement Animations -->
                 <div class="showcase-card" data-game="wydad-raja">
                     <div class="video-wrapper">
                         <video controls preload="metadata">
@@ -745,7 +737,6 @@
             </div>
         </section>
 
-        <!-- Skills Marquee -->
         <div class="skills-marquee" id="skills">
             <div class="skill-badge"># Luau</div>
             <div class="skill-badge"># Roblox Studio</div>
@@ -756,12 +747,10 @@
             <div class="skill-badge"># OOP (Object-Oriented)</div>
         </div>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
             
             <div class="social-grid">
-                <!-- Roblox -->
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
@@ -773,7 +762,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- Discord -->
                 <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="DiscordIcon.png" class="social-icon" alt="Discord">
@@ -785,7 +773,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- GitHub -->
                 <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
@@ -797,7 +784,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- X -->
                 <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="XIcon.png" class="social-icon" alt="X">
@@ -809,7 +795,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
@@ -821,7 +806,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- Twitch -->
                 <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
@@ -833,7 +817,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- YouTube -->
                 <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
@@ -845,7 +828,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- Email -->
                 <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
                     <div class="social-left">
                         <img src="GmailIcon.png" class="social-icon" alt="Email">
@@ -859,20 +841,18 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer>
             <p data-key="footerText">microb © 2026 • Developer Portfolio</p>
         </footer>
 
     </div>
 
-    <!-- Interactive Logic Control Script -->
     <script>
         const translations = {
             en: {
+                navHome: "Home",
                 navProjects: "Projects",
                 navWork: "Work",
-                navSkills: "Skills",
                 navContact: "Contact",
                 statusText: "Available for commissions / hiring",
                 heroTitle: "Designing <span>High-Performance Experiences</span> on Roblox.",
@@ -896,9 +876,9 @@
                 footerText: "microb © 2026 • Developer Portfolio"
             },
             fr: {
+                navHome: "Accueil",
                 navProjects: "Projets",
                 navWork: "Galerie",
-                navSkills: "Compétences",
                 navContact: "Contact",
                 statusText: "Disponible pour des projets",
                 heroTitle: "Concepteur d'<span>Expériences Hautes Performances</span> sur Roblox.",
