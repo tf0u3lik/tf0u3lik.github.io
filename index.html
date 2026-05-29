@@ -36,7 +36,7 @@
             line-height: 1.5;
         }
 
-        /* Top Navigation Bar */
+        /* Barre de Navigation Supérieure */
         nav {
             position: fixed;
             top: 0;
@@ -106,7 +106,7 @@
             color: var(--text-main);
         }
 
-        /* Language Switcher Button */
+        /* Bouton Langue */
         .lang-switcher {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
@@ -124,14 +124,14 @@
             background: rgba(16, 185, 129, 0.1);
         }
 
-        /* Main Container */
+        /* Conteneur Principal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 120px 20px 60px 20px;
         }
 
-        /* Hero Section */
+        /* Section Hero */
         .hero {
             display: grid;
             grid-template-columns: 1.6fr 1fr;
@@ -224,7 +224,7 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Hero Right - Avatar Box */
+        /* Hero Right - Cadre Photo */
         .hero-right {
             display: flex;
             justify-content: center;
@@ -279,7 +279,7 @@
             font-weight: 600;
         }
 
-        /* Sections */
+        /* Titres de sections */
         section {
             padding: 60px 0;
         }
@@ -295,7 +295,7 @@
             color: var(--accent-color);
         }
 
-        /* Grids & Cards */
+        /* Grilles & Cartes */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -340,7 +340,7 @@
             margin-bottom: 20px;
         }
 
-        /* Skills Marquee */
+        /* Section Compétences Horizontale */
         .skills-marquee {
             display: flex;
             gap: 15px;
@@ -364,7 +364,7 @@
             color: var(--text-muted);
         }
 
-        /* Social Grid */
+        /* Section Réseaux */
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -422,13 +422,7 @@
             font-size: 0.85rem;
         }
 
-        /* Multi-language Visibility Handling */
-        [lang="fr"] .lang-en,
-        [lang="en"] .lang-fr {
-            display: none !important;
-        }
-
-        /* Mobile Responsive */
+        /* Responsive Mobile */
         @media (max-width: 768px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -449,9 +443,8 @@
         }
     </style>
 </head>
-<body lang="en">
+<body>
 
-    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -460,20 +453,10 @@
             </div>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li>
-                        <a href="#projects" class="lang-en">Projects</a>
-                        <a href="#projects" class="lang-fr">Projets</a>
-                    </li>
-                    <li>
-                        <a href="#skills" class="lang-en">Skills</a>
-                        <a href="#skills" class="lang-fr">Compétences</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="lang-en">Contact</a>
-                        <a href="#contact" class="lang-fr">Contact</a>
-                    </li>
+                    <li><a href="#projets" data-key="navProjects">Projects</a></li>
+                    <li><a href="#competences" data-key="navSkills">Skills</a></li>
+                    <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
-                <!-- Language Toggle Button -->
                 <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
             </div>
         </div>
@@ -481,35 +464,24 @@
 
     <div class="container">
         
-        <!-- Hero Section -->
         <main class="hero">
             <div class="hero-left">
                 <div class="status">
                     <div class="status-dot"></div> 
-                    <span class="lang-en">Available for commissions / hiring</span>
-                    <span class="lang-fr">Disponible pour des projets</span>
+                    <span data-key="statusText">Available for commissions / hiring</span>
                 </div>
-                
-                <h1 class="lang-en">Designing <span>High-Performance Experiences</span> on Roblox.</h1>
-                <h1 class="lang-fr">Concepteur d'<span>Expériences Hautes Performances</span> sur Roblox.</h1>
-                
+                <h1 data-key="heroTitle">Designing <span>High-Performance Experiences</span> on Roblox.</h1>
                 <div class="tags">// Luau Scripting • UI/UX Design • System Architecture</div>
-                
-                <p class="bio lang-en">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
-                <p class="bio lang-fr">Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.</p>
-                
+                <p class="bio" data-key="heroBio">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn-primary lang-en">View My Work</a>
-                    <a href="#projects" class="btn-primary lang-fr">Voir mon travail</a>
-                    
-                    <a href="#contact" class="btn-secondary lang-en">Let's Connect</a>
-                    <a href="#contact" class="btn-secondary lang-fr">Me connecter</a>
+                    <a href="#projets" class="btn-primary" data-key="btnWork">View My Work</a>
+                    <a href="#contact" class="btn-secondary" data-key="btnConnect">Let's Connect</a>
                 </div>
             </div>
             
             <div class="hero-right">
                 <div class="avatar-box">
-                    <img src="avatar.png" class="main-avatar" alt="Roblox Avatar microb">
+                    <img src="avatar.png" class="main-avatar" alt="Avatar Roblox microb">
                     <div class="avatar-caption">
                         <div class="avatar-name">
                             microb 
@@ -522,8 +494,7 @@
             </div>
         </main>
 
-        <!-- Skills Marquee -->
-        <div class="skills-marquee" id="skills">
+        <div class="skills-marquee" id="competences">
             <div class="skill-badge"># Luau</div>
             <div class="skill-badge"># Roblox Studio</div>
             <div class="skill-badge"># UI Design</div>
@@ -533,52 +504,32 @@
             <div class="skill-badge"># OOP (Object-Oriented)</div>
         </div>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2 class="section-title lang-en">Featured <span>Projects</span></h2>
-            <h2 class="section-title lang-fr">Projets <span>Majeurs</span></h2>
-            
+        <section id="projets">
+            <h2 class="section-title" data-key="projectsTitle">Featured <span>Projects</span></h2>
             <div class="grid-2">
                 <div class="project-card">
                     <div class="project-info">
-                        <div class="project-tag lang-en">[Simulation / City-Life]</div>
-                        <div class="project-tag lang-fr">[Simulation / Ville]</div>
-                        
+                        <div class="project-tag" data-key="project1Tag">[Simulation / City-Life]</div>
                         <h3>The Urblox: Life in the City</h3>
-                        
-                        <p class="lang-en">An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.</p>
-                        <p class="lang-fr">Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.</p>
-                        
-                        <a href="#" class="btn-secondary lang-en" style="padding: 6px 16px; font-size: 0.85rem;">Learn More</a>
-                        <a href="#" class="btn-secondary lang-fr" style="padding: 6px 16px; font-size: 0.85rem;">En savoir plus</a>
+                        <p data-key="project1Desc">An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.</p>
+                        <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" data-key="btnMore">Learn More</a>
                     </div>
                 </div>
-                
                 <div class="project-card">
                     <div class="project-info">
-                        <div class="project-tag lang-en">[System / UI Architecture]</div>
-                        <div class="project-tag lang-fr">[Système / Interface]</div>
-                        
-                        <h3 class="lang-en">Dynamic UI Frameworks</h3>
-                        <h3 class="lang-fr">Architecture UI & Modules Dynamiques</h3>
-                        
-                        <p class="lang-en">Developing responsive, modern UI design frameworks completely handled via Luau scripts. Fully optimized network replication for seamless framerates.</p>
-                        <p class="lang-fr">Développement de frameworks d'interfaces utilisateur modernes et réactifs sous Luau. Optimisation complète des scripts serveurs et clients pour un framerate maximal.</p>
-                        
-                        <a href="#" class="btn-secondary lang-en" style="padding: 6px 16px; font-size: 0.85rem;">Explore</a>
-                        <a href="#" class="btn-secondary lang-fr" style="padding: 6px 16px; font-size: 0.85rem;">Découvrir</a>
+                        <div class="project-tag" data-key="project2Tag">[System / UI Architecture]</div>
+                        <h3 data-key="project2Title">Dynamic UI Frameworks</h3>
+                        <p data-key="project2Desc">Developing responsive, modern UI design frameworks completely handled via Luau scripts. Fully optimized network replication for seamless framerates.</p>
+                        <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" data-key="btnExplore">Explore</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
-            <h2 class="section-title lang-en">Get In <span>Touch</span></h2>
-            <h2 class="section-title lang-fr">Discutons <span>Ensemble</span></h2>
-            
+            <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
             <div class="social-grid">
-                <!-- Roblox -->
+                
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
@@ -587,7 +538,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- Discord -->
                 <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="DiscordIcon.png" class="social-icon" alt="Discord">
@@ -596,7 +546,6 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- GitHub -->
                 <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
@@ -605,86 +554,4 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
-                <!-- X -->
-                <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="XIcon.png" class="social-icon" alt="X">
-                        <span class="social-name">X / Twitter</span>
-                    </div>
-                    <span class="social-arrow">↗</span>
-                </a>
-
-                <!-- TikTok -->
-                <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
-                        <span class="social-name">TikTok</span>
-                    </div>
-                    <span class="social-arrow">↗</span>
-                </a>
-
-                <!-- Twitch -->
-                <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
-                        <span class="social-name">Twitch</span>
-                    </div>
-                    <span class="social-arrow">↗</span>
-                </a>
-
-                <!-- YouTube -->
-                <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
-                        <span class="social-name">YouTube</span>
-                    </div>
-                    <span class="social-arrow">↗</span>
-                </a>
-
-                <!-- Email -->
-                <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
-                    <div class="social-left">
-                        <img src="GmailIcon.png" class="social-icon" alt="Email">
-                        <span class="social-name">Email</span>
-                    </div>
-                    <span class="social-arrow">↗</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p class="lang-en">microb © 2026 • Developer Portfolio</p>
-            <p class="lang-fr">microb © 2026 • Portfolio de Développeur</p>
-        </footer>
-
-    </div>
-
-    <!-- Interactive Language Control Script -->
-    <script>
-        function toggleLanguage() {
-            const body = document.body;
-            const btn = document.getElementById('langBtn');
-            
-            if (body.getAttribute('lang') === 'en') {
-                body.setAttribute('lang', 'fr');
-                btn.innerText = 'EN';
-                localStorage.setItem('preferred-lang', 'fr');
-            } else {
-                body.setAttribute('lang', 'en');
-                btn.innerText = 'FR';
-                localStorage.setItem('preferred-lang', 'en');
-            }
-        }
-
-        // Auto-load user preference on visit
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferred-lang');
-            if (savedLang === 'fr') {
-                document.body.setAttribute('lang', 'fr');
-                document.getElementById('langBtn').innerText = 'EN';
-            }
-        });
-    </script>
-</body>
-</html>
+                <a href="
