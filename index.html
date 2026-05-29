@@ -9,7 +9,7 @@
     <style>
         :root {
             --bg-color: #081308; 
-            --bg-overlay: rgba(8, 19, 8, 0.85); 
+            --bg-overlay: rgba(8, 19, 8, 0.92); 
             --card-bg: rgba(15, 30, 15, 0.65);
             --accent-color: #10b981; 
             --accent-glow: rgba(16, 185, 129, 0.25);
@@ -42,7 +42,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(8, 19, 8, 0.85);
+            background: rgba(8, 19, 8, 0.90);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
@@ -137,8 +137,8 @@
             grid-template-columns: 1.6fr 1fr;
             gap: 40px;
             align-items: center;
-            min-height: 70vh;
-            margin-bottom: 80px;
+            min-height: 65vh;
+            margin-bottom: 60px;
         }
 
         .hero-left .status {
@@ -287,8 +287,14 @@
         .section-title {
             font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 40px;
         }
 
         .section-title span {
@@ -299,6 +305,12 @@
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 25px;
         }
 
@@ -338,6 +350,90 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 20px;
+        }
+
+        /* Showcase Cards (Stadryx Style) */
+        .showcase-card {
+            background: rgba(10, 20, 10, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .showcase-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+        }
+
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            position: relative;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .showcase-body {
+            padding: 20px;
+        }
+
+        .showcase-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #60a5fa;
+            background: rgba(96, 165, 251, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .showcase-body h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .showcase-body p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 18px;
+            height: 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .showcase-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-showcase {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-showcase:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
         }
 
         /* Skills Marquee */
@@ -434,7 +530,7 @@
             .hero-buttons {
                 justify-content: center;
             }
-            .grid-2 {
+            .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
             }
             .nav-right {
@@ -445,7 +541,6 @@
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -455,10 +550,10 @@
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#projects" data-key="navProjects">Projects</a></li>
+                    <li><a href="#work" data-key="navWork">Work</a></li>
                     <li><a href="#skills" data-key="navSkills">Skills</a></li>
                     <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
-                <!-- Language Toggle Button -->
                 <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
             </div>
         </div>
@@ -466,7 +561,6 @@
 
     <div class="container">
         
-        <!-- Hero Section -->
         <main class="hero">
             <div class="hero-left">
                 <div class="status">
@@ -481,7 +575,7 @@
                 <p class="bio" data-key="heroBio">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
                 
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn-primary" data-key="btnWork">View My Work</a>
+                    <a href="#work" class="btn-primary" data-key="btnWork">View My Work</a>
                     <a href="#contact" class="btn-secondary" data-key="btnConnect">Contact Me</a>
                 </div>
             </div>
@@ -501,7 +595,6 @@
             </div>
         </main>
 
-        <!-- Skills Marquee -->
         <div class="skills-marquee" id="skills">
             <div class="skill-badge"># Luau</div>
             <div class="skill-badge"># Roblox Studio</div>
@@ -512,9 +605,55 @@
             <div class="skill-badge"># OOP (Object-Oriented)</div>
         </div>
 
-        <!-- Projects Section -->
+        <section id="work">
+            <h2 class="section-title" data-key="workTitle">Module <span>Gallery</span></h2>
+            <p class="section-subtitle" data-key="workSubtitle">Video demonstrations of systems and mechanics I've developed.</p>
+            
+            <div class="grid-3">
+                
+                <div class="showcase-card">
+                    <div class="video-container">
+                        <video controls preload="metadata">
+                            <source src="placeholder.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="showcase-body">
+                        <span class="showcase-badge">[UI/UX]</span>
+                        <h3 data-key="showcase1Title">Dynamic UI Framework</h3>
+                        <p data-key="showcase1Desc">Smooth transition layouts, advanced responsive features, and fully client-optimized performance loops.</p>
+                        <div class="showcase-actions">
+                            <a href="#" class="btn-showcase">
+                                <span>Watch</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <div class="video-container">
+                        <video controls preload="metadata">
+                            <source src="placeholder2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="showcase-body">
+                        <span class="showcase-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.1);">[System Arch]</span>
+                        <h3 data-key="showcase2Title">Advanced Core Systems</h3>
+                        <p data-key="showcase2Desc">Modular system management architecture ensuring zero network latency and fully secure server-client replication.</p>
+                        <div class="showcase-actions">
+                            <a href="#" class="btn-showcase">
+                                <span>Watch</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">Featured <span>Projects</span></h2>
+            <p class="section-subtitle" data-key="projectsSubtitle">Large scale game development and productions.</p>
             
             <div class="grid-2">
                 <div class="project-card">
@@ -537,12 +676,11 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
+            <p class="section-subtitle" data-key="contactSubtitle">Feel free to reach out for commissions, projects, or professional opportunities.</p>
             
             <div class="social-grid">
-                <!-- Roblox -->
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
@@ -550,8 +688,6 @@
                     </div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- Discord -->
                 <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="DiscordIcon.png" class="social-icon" alt="Discord">
@@ -559,8 +695,6 @@
                     </div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- GitHub -->
                 <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
@@ -568,8 +702,6 @@
                     </div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- X -->
                 <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="XIcon.png" class="social-icon" alt="X">
@@ -577,8 +709,6 @@
                     </div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
@@ -586,8 +716,6 @@
                     </div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- Twitch -->
                 <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
@@ -595,8 +723,6 @@
                     </div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- YouTube -->
                 <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
@@ -604,8 +730,6 @@
                     </div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- Email -->
                 <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
                     <div class="social-left">
                         <img src="GmailIcon.png" class="social-icon" alt="Email">
@@ -616,18 +740,17 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer>
             <p data-key="footerText">microb © 2026 • Developer Portfolio</p>
         </footer>
 
     </div>
 
-    <!-- Interactive Language Control Script -->
     <script>
         const translations = {
             en: {
                 navProjects: "Projects",
+                navWork: "Work",
                 navSkills: "Skills",
                 navContact: "Contact",
                 statusText: "Available for commissions / hiring",
@@ -635,7 +758,14 @@
                 heroBio: "Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.",
                 btnWork: "View My Work",
                 btnConnect: "Contact Me",
+                workTitle: "Module <span>Gallery</span>",
+                workSubtitle: "Video demonstrations of systems and mechanics I've developed.",
+                showcase1Title: "Dynamic UI Framework",
+                showcase1Desc: "Smooth transition layouts, advanced responsive features, and fully client-optimized performance loops.",
+                showcase2Title: "Advanced Core Systems",
+                showcase2Desc: "Modular system management architecture ensuring zero network latency and fully secure server-client replication.",
                 projectsTitle: "Featured <span>Projects</span>",
+                projectsSubtitle: "Large scale game development and productions.",
                 project1Tag: "[Simulation / City-Life]",
                 project1Desc: "An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.",
                 project2Tag: "[System / UI Architecture]",
@@ -644,10 +774,12 @@
                 btnMore: "Learn More",
                 btnExplore: "Explore",
                 contactTitle: "Get In <span>Touch</span>",
+                contactSubtitle: "Feel free to reach out for commissions, projects, or professional opportunities.",
                 footerText: "microb © 2026 • Developer Portfolio"
             },
             fr: {
                 navProjects: "Projets",
+                navWork: "Galerie",
                 navSkills: "Compétences",
                 navContact: "Contact",
                 statusText: "Disponible pour des projets",
@@ -655,7 +787,14 @@
                 heroBio: "Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.",
                 btnWork: "Voir mon travail",
                 btnConnect: "Me contacter",
+                workTitle: "Galerie de <span>Modules</span>",
+                workSubtitle: "Démonstrations vidéo des systèmes et mécaniques que j'ai développés.",
+                showcase1Title: "Framework UI Dynamique",
+                showcase1Desc: "Layouts à transitions fluides, fonctionnalités responsives avancées et boucles de performance optimisées côté client.",
+                showcase2Title: "Systèmes Core Avancés",
+                showcase2Desc: "Architecture de gestion modulaire garantissant une latence réseau nulle et une réplication serveur-client sécurisée.",
                 projectsTitle: "Projets <span>Majeurs</span>",
+                projectsSubtitle: "Développement et productions de jeux à grande échelle.",
                 project1Tag: "[Simulation / Ville]",
                 project1Desc: "Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.",
                 project2Tag: "[Système / Interface]",
@@ -664,6 +803,7 @@
                 btnMore: "En savoir plus",
                 btnExplore: "Découvrir",
                 contactTitle: "Discutons <span>Ensemble</span>",
+                contactSubtitle: "N'hésitez pas à me contacter pour des commandes, des projets ou des opportunités professionnelles.",
                 footerText: "microb © 2026 • Portfolio de Développeur"
             }
         };
@@ -673,7 +813,6 @@
             const btn = document.getElementById('langBtn');
             
             body.setAttribute('lang', lang);
-            // If the site language is English, the button proposes to switch to "FR" and vice-versa
             btn.innerText = lang === 'en' ? 'FR' : 'EN';
             
             document.querySelectorAll('[data-key]').forEach(element => {
@@ -692,7 +831,6 @@
             applyLanguage(nextLang);
         }
 
-        // Default setting: ALWAYS boot on English unless a personal preference was explicitly saved before
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'en';
             applyLanguage(savedLang);
