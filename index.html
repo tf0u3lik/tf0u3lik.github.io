@@ -6,13 +6,15 @@
     <title>tf0u3lik — Portfolio de Développeur</title>
     <style>
         :root {
-            --bg-overlay: rgba(11, 15, 25, 0.88); /* Assombrit le fond pour la lisibilité */
-            --card-bg: rgba(17, 24, 39, 0.75);
-            --accent-color: #10b981; /* Un beau vert vibrant moderne */
-            --accent-glow: rgba(16, 185, 129, 0.3); /* Le halo lumineux en vert */
+            /* Ta couleur exacte demandée pour remplacer le bleu bizarre */
+            --bg-color: #081308; 
+            --bg-overlay: rgba(8, 19, 8, 0.85); 
+            --card-bg: rgba(15, 30, 15, 0.65);
+            --accent-color: #10b981; /* Un beau vert vibrant */
+            --accent-glow: rgba(16, 185, 129, 0.25);
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --border-color: #1f2937;
+            --border-color: #1c2e1c;
         }
 
         * {
@@ -27,7 +29,6 @@
         }
 
         body {
-            /* Utilisation de l'image ChatGPT Image 29 mai 2026, 14_39_52.png */
             background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('background.png') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-main);
@@ -40,7 +41,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(11, 15, 25, 0.8);
+            background: rgba(8, 19, 8, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
@@ -60,7 +61,7 @@
             font-size: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .logo-dot {
@@ -69,6 +70,13 @@
             background-color: var(--accent-color);
             border-radius: 50%;
             box-shadow: 0 0 8px var(--accent-color);
+        }
+
+        .verified-badge {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            vertical-align: middle;
         }
 
         .nav-links {
@@ -98,7 +106,7 @@
             padding: 120px 20px 60px 20px;
         }
 
-        /* Section Hero (Inspirée de image_d782e0.jpg) */
+        /* Section Hero */
         .hero {
             display: grid;
             grid-template-columns: 1.6fr 1fr;
@@ -173,7 +181,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #2563eb;
+            background-color: #059669;
         }
 
         .btn-secondary {
@@ -191,7 +199,7 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Hero Right - Cadre Photo (Inspiré de image_d782e0.jpg) */
+        /* Hero Right - Cadre Photo */
         .hero-right {
             display: flex;
             justify-content: center;
@@ -204,11 +212,11 @@
             border: 1px solid var(--border-color);
             padding: 16px;
             border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
         }
 
-        /* Image d'avatar issue de Gemini_Generated_Image_uummyduummyduumm.jpg */
-        .avatar-box img {
+        .avatar-box img.main-avatar {
             width: 280px;
             height: 280px;
             object-fit: cover;
@@ -224,7 +232,11 @@
 
         .avatar-name {
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .avatar-role {
@@ -232,10 +244,10 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
-        /* Titres de sections généraux */
+        /* Titres de sections */
         section {
             padding: 60px 0;
         }
@@ -251,7 +263,7 @@
             color: var(--accent-color);
         }
 
-        /* Grilles & Cartes (Style inspiré de image_d77fb4.png & image_d77f5b.jpg) */
+        /* Grilles & Cartes */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -269,7 +281,7 @@
 
         .project-card:hover {
             transform: translateY(-4px);
-            border-color: #374151;
+            border-color: rgba(16, 185, 129, 0.4);
         }
 
         .project-info {
@@ -296,7 +308,7 @@
             margin-bottom: 20px;
         }
 
-        /* Section Compétences Horizontale (Inspirée de image_d782bb.png) */
+        /* Section Compétences Horizontale */
         .skills-marquee {
             display: flex;
             gap: 15px;
@@ -320,39 +332,53 @@
             color: var(--text-muted);
         }
 
-        /* Section Réseaux (Inspirée de image_d77f00.png) */
+        /* Section Réseaux Modifiée avec Icônes */
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 15px;
         }
 
         .social-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 16px 20px;
+            border-radius: 10px;
             text-decoration: none;
             color: var(--text-main);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            transition: background 0.2s, border-color 0.2s;
+            justify-content: space-between;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s ease;
         }
 
         .social-card:hover {
             border-color: var(--accent-color);
-            background: rgba(59, 130, 246, 0.05);
+            background: rgba(16, 185, 129, 0.08);
+            transform: scale(1.02);
+        }
+
+        .social-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
         }
 
         .social-name {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .social-arrow {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         footer {
@@ -388,7 +414,8 @@
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <div class="logo-dot"></div> tf0u3lik
+                <div class="logo-dot"></div> tf0u3lik 
+                <img src="VerifiedIcon.png" class="verified-badge" alt="Verified">
             </div>
             <ul class="nav-links">
                 <li><a href="#projets">Projets</a></li>
@@ -411,16 +438,18 @@
                 <p class="bio">Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.</p>
                 <div class="hero-buttons">
                     <a href="#projets" class="btn-primary">Voir mon travail</a>
-                    <a href="#contact" class="btn-secondary">Me contacter</a>
+                    <a href="#contact" class="btn-secondary">Me connecter</a>
                 </div>
             </div>
             
             <div class="hero-right">
                 <div class="avatar-box">
-                    <!-- Photo de ton avatar Roblox -->
-                    <img src="avatar.png" alt="Avatar Roblox tf0u3lik">
+                    <img src="avatar.png" class="main-avatar" alt="Avatar Roblox tf0u3lik">
                     <div class="avatar-caption">
-                        <div class="avatar-name">tf0u3lik</div>
+                        <div class="avatar-name">
+                            tf0u3lik 
+                            <img src="VerifiedIcon.png" class="verified-badge" alt="Verified">
+                        </div>
                         <div class="avatar-role">Lead Developer</div>
                     </div>
                 </div>
@@ -461,26 +490,83 @@
             </div>
         </section>
 
-        <!-- Section Contact / Réseaux -->
+        <!-- Section Contact / Réseaux avec toutes tes icônes de image_d4c901.png -->
         <section id="contact">
             <h2 class="section-title">Discutons <span>Ensemble</span></h2>
             <div class="social-grid">
+                
+                <!-- Roblox -->
+                <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
+                        <span class="social-name">Roblox</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <!-- Discord -->
+                <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="DiscordIcon.png" class="social-icon" alt="Discord">
+                        <span class="social-name">Discord</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <!-- GitHub -->
                 <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
-                    <span class="social-name">GitHub</span>
+                    <div class="social-left">
+                        <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
+                        <span class="social-name">GitHub</span>
+                    </div>
                     <span class="social-arrow">↗</span>
                 </a>
-                <a href="#" target="_blank" class="social-card">
-                    <span class="social-name">Roblox</span>
+
+                <!-- X (Twitter) -->
+                <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="XIcon.png" class="social-icon" alt="X">
+                        <span class="social-name">X / Twitter</span>
+                    </div>
                     <span class="social-arrow">↗</span>
                 </a>
-                <a href="#" target="_blank" class="social-card">
-                    <span class="social-name">Discord</span>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
+                        <span class="social-name">TikTok</span>
+                    </div>
                     <span class="social-arrow">↗</span>
                 </a>
-                <a href="#" target="_blank" class="social-card">
-                    <span class="social-name">TikTok</span>
+
+                <!-- Twitch -->
+                <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
+                        <span class="social-name">Twitch</span>
+                    </div>
                     <span class="social-arrow">↗</span>
                 </a>
+
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
+                        <span class="social-name">YouTube</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
+                    <div class="social-left">
+                        <img src="GmailIcon.png" class="social-icon" alt="Email">
+                        <span class="social-name">Email</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
             </div>
         </section>
 
