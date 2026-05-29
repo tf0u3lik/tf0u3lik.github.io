@@ -729,16 +729,19 @@
         <section id="work">
             <div class="showcase-header">
                 <h2 class="section-title" data-key="workTitle">Module <span>Gallery</span></h2>
-                
+
                 <!-- Filter tabs by specific Game Projects -->
                 <div class="filter-tabs">
-                    <button class="filter-btn active" onclick="filterGallery('all')" data-key="filterAll">All</button>
-                    <button class="filter-btn" onclick="filterGallery('wydad-raja')">Wydad Vs Raja</button>
+                    <button class="filter-btn active" onclick="filterGallery(this, 'all')" data-key="filterAll">All</button>
+                    <button class="filter-btn" onclick="filterGallery(this, 'wydad-raja')">Wydad Vs Raja</button>
+                    <button class="filter-btn" onclick="filterGallery(this, 'the-urblox')">The Urblox</button>
                 </div>
             </div>
 
             <div class="showcase-grid" id="galleryGrid">
-                
+
+                <!-- === WYDAD VS RAJA CARDS === -->
+
                 <!-- Card 1: UI System Menu -->
                 <div class="showcase-card" data-game="wydad-raja">
                     <div class="video-wrapper">
@@ -772,6 +775,68 @@
                         <div class="card-actions">
                             <a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-game-link">🎮 Game</a>
                         </div>
+                    </div>
+                </div>
+
+                <!-- === THE URBLOX CARDS === -->
+
+                <!-- Card 3: Main Menu Initialization -->
+                <div class="showcase-card" data-game="the-urblox">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="TheUrblox_MainMenu.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag">[UI/UX & Core Systems]</div>
+                        <h3>Main Menu Initialization</h3>
+                        <p>Chargement asynchrone, écran d'accueil interactif et navigation fluide pour The Urblox.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Map Selection Interface -->
+                <div class="showcase-card" data-game="the-urblox">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="TheUrblox_MapSelect.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag">[UI/UX & Scripting]</div>
+                        <h3>Map Selection Interface</h3>
+                        <p>Système de sélection de zone interactive avec détection de clics sur éléments graphiques (GUI).</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Character Customizer -->
+                <div class="showcase-card" data-game="the-urblox">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="TheUrblox_Customizer.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag">[System Architecture]</div>
+                        <h3>Character Customizer</h3>
+                        <p>Personnalisation avancée : genre, colorimétrie et accessoires dynamiques pour les avatars.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Registration & Keyboard System -->
+                <div class="showcase-card" data-game="the-urblox">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="TheUrblox_VirtualKeyboard.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag">[Networking & UI]</div>
+                        <h3>Registration & Keyboard System</h3>
+                        <p>Clavier virtuel interactif pour la saisie sécurisée du prénom et du nom du personnage joueur.</p>
                     </div>
                 </div>
 
@@ -990,21 +1055,17 @@
         }
 
         // Gallery Filter System Logic
-        function filterGallery(category) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        function filterGallery(btn, category) {
+            // Update active button state
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-            const cards = document.querySelectorAll('.showcase-card');
-            cards.forEach(card => {
+            // Show/hide cards based on data-game attribute
+            document.querySelectorAll('.showcase-card').forEach(card => {
                 if (category === 'all') {
                     card.style.display = 'block';
                 } else {
-                    if (card.getAttribute('data-game') === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    card.style.display = card.getAttribute('data-game') === category ? 'block' : 'none';
                 }
             });
         }
