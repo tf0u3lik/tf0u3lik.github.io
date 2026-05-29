@@ -295,7 +295,14 @@
             color: var(--accent-color);
         }
 
-        /* Single Game Project Style */
+        /* Game Projects Stack Layout */
+        .projects-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Game Project Showcase Style */
         .game-showcase-container {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -608,6 +615,7 @@
 </head>
 <body id="home">
 
+    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -621,6 +629,7 @@
                     <li><a href="#work" data-key="navWork">Work</a></li>
                     <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
+                <!-- Language Toggle Button -->
                 <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
             </div>
         </div>
@@ -628,6 +637,7 @@
 
     <div class="container">
         
+        <!-- Hero Section -->
         <main class="hero">
             <div class="hero-left">
                 <div class="status">
@@ -662,36 +672,65 @@
             </div>
         </main>
 
+        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">Active <span>Projects</span></h2>
             
-            <div class="game-showcase-container">
-                <div class="game-banner-side">
-                    <img src="WydadVSRajaBanner.png" alt="Wydad Vs Raja Game Banner">
-                </div>
-                <div class="game-details-side">
-                    <div class="project-tag" data-key="project1Tag">[Stadium/Simulation & Combat]</div>
-                    <h3>Wydad Vs Raja (Stadium Donor)</h3>
-                    
-                    <div class="game-stats-row">
-                        <div class="stat-badge"><span data-key="statLikes">Likes:</span> 70%</div>
-                        <div class="stat-badge"><span data-key="statVisits">Visits:</span> 8K+</div>
-                        <div class="stat-badge"><span data-key="statActive">Active:</span> 1+</div>
+            <div class="projects-stack">
+                <!-- Project 1: Wydad vs Raja -->
+                <div class="game-showcase-container">
+                    <div class="game-banner-side">
+                        <img src="WydadVSRajaBanner.png" alt="Wydad Vs Raja Game Banner">
                     </div>
+                    <div class="game-details-side">
+                        <div class="project-tag" data-key="project1Tag">[Stadium/Simulation & Combat]</div>
+                        <h3>Wydad Vs Raja (Stadium Donor)</h3>
+                        
+                        <div class="game-stats-row">
+                            <div class="stat-badge"><span data-key="statLikes">Likes:</span> 70%</div>
+                            <div class="stat-badge"><span data-key="statVisits">Visits:</span> 8K+</div>
+                            <div class="stat-badge"><span data-key="statActive">Active:</span> 1+</div>
+                        </div>
 
-                    <p data-key="gameProjectDesc">An immersive stadium experience featuring tactical combat, team dynamics, fully scripted UI frameworks, and fluid user systems built around the legendary Moroccan derby clash.</p>
-                    
-                    <div>
-                        <a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-primary" data-key="btnPlayGame">Play on Roblox 🎮</a>
+                        <p data-key="gameProjectDesc">An immersive stadium experience featuring tactical combat, team dynamics, fully scripted UI frameworks, and fluid user systems built around the legendary Moroccan derby clash.</p>
+                        
+                        <div>
+                            <a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-primary" data-key="btnPlayGame">Play on Roblox 🎮</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: The Urblox -->
+                <div class="game-showcase-container">
+                    <div class="game-banner-side">
+                        <img src="TheUrbzBanner.png" alt="The Urblox Game Banner">
+                    </div>
+                    <div class="game-details-side">
+                        <div class="project-tag" data-key="project2Tag">[Roleplay / Urban Life]</div>
+                        <h3>The Urblox: Stars in the City</h3>
+                        
+                        <div class="game-stats-row">
+                            <div class="stat-badge"><span data-key="statStatus">Status:</span> <span data-key="statDev">In Development...</span></div>
+                            <div class="stat-badge"><span data-key="statLikes">Likes:</span> --</div>
+                            <div class="stat-badge"><span data-key="statActive">Active:</span> 0</div>
+                        </div>
+
+                        <p data-key="project2Desc">An upcoming retro urban simulation project focusing on city lifestyle, custom interactive systems, and deep visual aesthetics.</p>
+                        
+                        <div>
+                            <span class="btn-secondary" style="cursor: not-allowed; opacity: 0.7;" data-key="btnComingSoon">Coming Soon 🚀</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Showcase / Work Gallery Section -->
         <section id="work">
             <div class="showcase-header">
                 <h2 class="section-title" data-key="workTitle">Module <span>Gallery</span></h2>
                 
+                <!-- Filter tabs by specific Game Projects -->
                 <div class="filter-tabs">
                     <button class="filter-btn active" onclick="filterGallery('all')" data-key="filterAll">All</button>
                     <button class="filter-btn" onclick="filterGallery('wydad-raja')">Wydad Vs Raja</button>
@@ -700,6 +739,7 @@
 
             <div class="showcase-grid" id="galleryGrid">
                 
+                <!-- Card 1: UI System Menu -->
                 <div class="showcase-card" data-game="wydad-raja">
                     <div class="video-wrapper">
                         <video controls preload="metadata">
@@ -717,6 +757,7 @@
                     </div>
                 </div>
 
+                <!-- Card 2: Combat & Movement Animations -->
                 <div class="showcase-card" data-game="wydad-raja">
                     <div class="video-wrapper">
                         <video controls preload="metadata">
@@ -737,6 +778,7 @@
             </div>
         </section>
 
+        <!-- Skills Marquee -->
         <div class="skills-marquee" id="skills">
             <div class="skill-badge"># Luau</div>
             <div class="skill-badge"># Roblox Studio</div>
@@ -747,10 +789,12 @@
             <div class="skill-badge"># OOP (Object-Oriented)</div>
         </div>
 
+        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
             
             <div class="social-grid">
+                <!-- Roblox -->
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
@@ -762,6 +806,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Discord -->
                 <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="DiscordIcon.png" class="social-icon" alt="Discord">
@@ -773,6 +818,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- GitHub -->
                 <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
@@ -784,6 +830,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- X -->
                 <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="XIcon.png" class="social-icon" alt="X">
@@ -795,6 +842,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
@@ -806,6 +854,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Twitch -->
                 <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
@@ -817,6 +866,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- YouTube -->
                 <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
                     <div class="social-left">
                         <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
@@ -828,6 +878,7 @@
                     <span class="social-arrow">↗</span>
                 </a>
 
+                <!-- Email -->
                 <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
                     <div class="social-left">
                         <img src="GmailIcon.png" class="social-icon" alt="Email">
@@ -841,12 +892,14 @@
             </div>
         </section>
 
+        <!-- Footer -->
         <footer>
             <p data-key="footerText">microb © 2026 • Developer Portfolio</p>
         </footer>
 
     </div>
 
+    <!-- Interactive Logic Control Script -->
     <script>
         const translations = {
             en: {
@@ -864,8 +917,13 @@
                 statLikes: "Likes:",
                 statVisits: "Visits:",
                 statActive: "Active:",
+                statStatus: "Status:",
+                statDev: "In Development...",
                 gameProjectDesc: "An immersive stadium experience featuring tactical combat, team dynamics, fully scripted UI frameworks, and fluid user systems built around the legendary Moroccan derby clash.",
                 btnPlayGame: "Play on Roblox 🎮",
+                project2Tag: "[Roleplay / Urban Life]",
+                project2Desc: "An upcoming retro urban simulation project focusing on city lifestyle, custom interactive systems, and deep visual aesthetics.",
+                btnComingSoon: "Coming Soon 🚀",
                 workTitle: "Module <span>Gallery</span>",
                 filterAll: "All",
                 showcase1Title: "Main Menu UI System",
@@ -890,8 +948,13 @@
                 statLikes: "Mentions J'aime :",
                 statVisits: "Visites :",
                 statActive: "Actifs :",
+                statStatus: "Statut :",
+                statDev: "En cours de développement...",
                 gameProjectDesc: "Une expérience de stade immersive comprenant un système de combat tactique, des dynamiques d'équipes, des interfaces entièrement scriptées et des modules fluides autour du mythique derby marocain.",
                 btnPlayGame: "Jouer sur Roblox 🎮",
+                project2Tag: "[Roleplay / Vie Urbaine]",
+                project2Desc: "Un projet à venir de simulation urbaine rétro, axé sur le style de vie citadin, des systèmes interactifs personnalisés et une esthétique visuelle poussée.",
+                btnComingSoon: "Bientôt disponible 🚀",
                 workTitle: "Galerie de <span>Modules</span>",
                 filterAll: "Tous",
                 showcase1Title: "Système UI Menu Principal",
