@@ -3,551 +3,670 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tf0u3lik | Developer Portfolio</title>
+    <title>microb — Developer Portfolio</title>
+    <link class="favicon" rel="icon" type="image/png" href="microb.png">
+    
     <style>
         :root {
-            --bg-dark: #0b0f19;
-            --card-bg: #151d30;
-            --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #22314d;
+            --bg-color: #081308; 
+            --bg-overlay: rgba(8, 19, 8, 0.85); 
+            --card-bg: rgba(15, 30, 15, 0.65);
+            --accent-color: #10b981; 
+            --accent-glow: rgba(16, 185, 129, 0.25);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #1c2e1c;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
+        html {
             scroll-behavior: smooth;
         }
 
-        /* Navigation */
+        body {
+            background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* Top Navigation Bar */
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(11, 15, 25, 0.8);
+            background: rgba(8, 19, 8, 0.85);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
         }
 
         .logo {
-            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .logo span {
-            color: var(--accent);
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-color);
+        }
+
+        .verified-badge {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
 
         .nav-links {
             display: flex;
+            gap: 25px;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .lang-switch {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
         }
 
-        .lang-switch:hover {
-            border-color: var(--accent);
+        /* Language Switcher Button */
+        .lang-switcher {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-switcher:hover {
+            border-color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 60px 20px;
         }
 
         /* Hero Section */
-        header {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 10%;
-            position: relative;
+        .hero {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 40px;
+            align-items: center;
+            min-height: 70vh;
+            margin-bottom: 80px;
         }
 
-        .status-badge {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            width: fit-content;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: flex;
+        .hero-left .status {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 25px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent);
+        .hero-left .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
         }
 
-        header h1 {
+        .hero-left h1 {
             font-size: 3.5rem;
-            max-width: 800px;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
         }
 
-        header h1 span {
-            color: var(--accent);
+        .hero-left h1 span {
+            color: var(--accent-color);
         }
 
-        header p {
+        .hero-left .tags {
             color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 2.5rem;
+            font-size: 0.9rem;
+            font-family: monospace;
+            margin-bottom: 25px;
         }
 
-        .cta-container {
+        .hero-left .bio {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 620px;
+        }
+
+        .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 15px;
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: var(--bg-dark);
-            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s;
+            transition: background 0.2s;
         }
 
         .btn-primary:hover {
-            background: var(--accent-hover);
+            background-color: #059669;
         }
 
         .btn-secondary {
-            background: transparent;
+            background-color: transparent;
             color: var(--text-main);
-            border: 1px solid var(--border);
-            padding: 0.8rem 2rem;
+            padding: 12px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            transition: background 0.2s;
         }
 
         .btn-secondary:hover {
-            border-color: var(--accent);
-            background: rgba(56, 189, 248, 0.05);
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Section Global Styles */
-        section {
-            padding: 6rem 10%;
-            border-top: 1px solid var(--border);
+        /* Hero Right - Avatar Box */
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .section-header {
-            margin-bottom: 4rem;
+        .avatar-box {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
         }
 
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        .avatar-box img.main-avatar {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        .section-header h2 span {
-            color: var(--accent);
+        .avatar-caption {
+            margin-top: 15px;
+            text-align: center;
         }
 
-        .section-header p {
-            color: var(--text-muted);
+        .avatar-name {
+            font-weight: 700;
             font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
-        /* Showcase Work Gallery */
-        .grid-3 {
+        .avatar-tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .avatar-role {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span {
+            color: var(--accent-color);
+        }
+
+        /* Showcase Work Video Section */
+        .showcase-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
         }
 
         .showcase-card {
             background: var(--card-bg);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
+            backdrop-filter: blur(8px);
+            transition: transform 0.2s, border-color 0.2s;
         }
 
         .showcase-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.4);
         }
 
-        .video-container {
+        .video-wrapper {
             width: 100%;
             aspect-ratio: 16/9;
             background: #000;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .video-container video {
+        .video-wrapper video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .showcase-body {
-            padding: 2rem;
-        }
-
-        .showcase-badge {
-            color: var(--accent);
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .showcase-body h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .showcase-body p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            min-height: 70px;
-        }
-
-        .btn-showcase {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s;
-        }
-
-        .btn-showcase:hover {
-            color: var(--accent-hover);
-        }
-
-        /* Featured Projects Layout */
-        .project-row {
-            display: flex;
-            flex-direction: column;
-            gap: 6rem;
-        }
-
-        .project-item {
+        /* Grids & Cards */
+        .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            gap: 25px;
         }
 
-        .project-item.reverse {
-            direction: rtl;
-        }
-
-        .project-item.reverse .project-info {
-            direction: ltr;
-        }
-
-        .project-display {
+        .project-card {
             background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            font-weight: bold;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .project-info span {
-            color: var(--accent);
-            font-size: 0.9rem;
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
         }
 
         .project-info h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
         }
 
         .project-info p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
         }
 
-        /* Skills Integration */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
+        /* Skills Marquee */
+        .skills-marquee {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin-bottom: 40px;
+            white-space: nowrap;
         }
 
-        .skill-box {
+        .skills-marquee::-webkit-scrollbar {
+            display: none;
+        }
+
+        .skill-badge {
             background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            transition: background 0.3s;
-        }
-
-        .skill-box:hover {
-            background: rgba(56, 189, 248, 0.02);
-            border-color: var(--accent);
-        }
-
-        .skill-box h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-
-        .skill-box p {
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--text-muted);
-            font-size: 0.9rem;
         }
 
-        /* Footer & Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+        /* Social Grid */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
         }
 
-        .contact-content p {
+        .social-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s ease;
+        }
+
+        .social-card:hover {
+            border-color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.08);
+            transform: scale(1.02);
+        }
+
+        .social-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .social-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .social-arrow {
             color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
         }
 
         footer {
+            margin-top: 60px;
+            padding: 30px 0;
             text-align: center;
-            padding: 3rem;
+            border-top: 1px solid var(--border-color);
             color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            .project-item { grid-template-columns: 1fr; gap: 2rem; }
-            .project-item.reverse { direction: ltr; }
-            nav { padding: 1.2rem 5%; }
-            .nav-links { display: none; }
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-left h1 {
+                font-size: 2.5rem;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .grid-2, .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-right {
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
     <nav>
-        <div class="logo">tf0u3lik<span>.is-a.dev</span></div>
-        <ul class="nav-links">
-            <li><a href="#work" data-key="navWork">Work</a></li>
-            <li><a href="#projects" data-key="navProjects">Projects</a></li>
-            <li><a href="#skills" data-key="navSkills">Skills</a></li>
-            <li><a href="#contact" data-key="navContact">Contact</a></li>
-        </ul>
-        <button class="lang-switch" id="langBtn">FR</button>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-dot"></div> microb 
+                <img src="VerifiedIcon.png" class="verified-badge" alt="Verified">
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#work" data-key="navWork">Work</a></li>
+                    <li><a href="#projects" data-key="navProjects">Projects</a></li>
+                    <li><a href="#skills" data-key="navSkills">Skills</a></li>
+                    <li><a href="#contact" data-key="navContact">Contact</a></li>
+                </ul>
+                <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
+            </div>
+        </div>
     </nav>
 
-    <!-- Hero Introduction -->
-    <header>
-        <div class="status-badge">
-            <div class="status-dot"></div>
-            <span data-key="statusText">Available for commissions / hiring</span>
-        </div>
-        <h1 data-key="heroTitle">Designing <span>High-Performance Experiences</span> on Roblox.</h1>
-        <p data-key="heroBio">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
-        <div class="cta-container">
-            <a href="#work" class="btn-primary" data-key="btnWork">View My Work</a>
-            <a href="#contact" class="btn-secondary" data-key="btnConnect">Contact Me</a>
-        </div>
-    </header>
-
-    <!-- Gallery Showcases Section -->
-    <section id="work">
-        <div class="section-header">
-            <h2 data-key="workTitle">Module <span>Gallery</span></h2>
-            <p data-key="workSubtitle">Video demonstrations of systems and mechanics I've developed.</p>
-        </div>
+    <div class="container">
         
-        <div class="grid-3">
+        <main class="hero">
+            <div class="hero-left">
+                <div class="status">
+                    <div class="status-dot"></div> 
+                    <span data-key="statusText">Available for commissions / hiring</span>
+                </div>
+                
+                <h1 data-key="heroTitle">Designing <span>High-Performance Experiences</span> on Roblox.</h1>
+                
+                <div class="tags">// Luau Scripting • UI/UX Design • System Architecture</div>
+                
+                <p class="bio" data-key="heroBio">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#work" class="btn-primary" data-key="btnWork">View My Work</a>
+                    <a href="#contact" class="btn-secondary" data-key="btnConnect">Contact Me</a>
+                </div>
+            </div>
             
-            <!-- Showcase 1: Team Selection UI System -->
-            <div class="showcase-card">
-                <div class="video-container">
-                    <video controls preload="metadata">
-                        <source src="Wydad VS Raja.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="showcase-body">
-                    <span class="showcase-badge">[UI/UX & Systems]</span>
-                    <h3 data-key="showcase1Title">Main Menu UI System</h3>
-                    <p data-key="showcase1Desc">An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.</p>
-                    <div class="showcase-actions">
-                        <a href="#" class="btn-showcase">
-                            <span data-key="btnWatch">Watch</span>
-                        </a>
+            <div class="hero-right">
+                <div class="avatar-box">
+                    <img src="avatar.png" class="main-avatar" alt="Roblox Avatar microb">
+                    <div class="avatar-caption">
+                        <div class="avatar-name">
+                            microb 
+                            <img src="VerifiedIcon.png" class="verified-badge" alt="Verified">
+                        </div>
+                        <div class="avatar-tag">@tfou3iik</div>
+                        <div class="avatar-role">Lead Developer</div>
                     </div>
                 </div>
             </div>
+        </main>
 
-            <!-- Showcase 2: Advanced Core Systems (Emplacement vide pour ton prochain module) -->
-            <div class="showcase-card">
-                <div class="video-container">
-                    <video controls preload="metadata">
-                        <source src="placeholder2.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="showcase-body">
-                    <span class="showcase-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.1);">[System Arch]</span>
-                    <h3 data-key="showcase2Title">Advanced Core Systems</h3>
-                    <p data-key="showcase2Desc">Modular system management architecture ensuring zero network latency and fully secure server-client replication.</p>
-                    <div class="showcase-actions">
-                        <a href="#" class="btn-showcase">
-                            <span data-key="btnWatch">Watch</span>
-                        </a>
+        <div class="skills-marquee" id="skills">
+            <div class="skill-badge"># Luau</div>
+            <div class="skill-badge"># Roblox Studio</div>
+            <div class="skill-badge"># UI Design</div>
+            <div class="skill-badge"># Systems Architecture</div>
+            <div class="skill-badge"># DataStore</div>
+            <div class="skill-badge"># Git</div>
+            <div class="skill-badge"># OOP (Object-Oriented)</div>
+        </div>
+
+        <section id="work">
+            <h2 class="section-title" data-key="workTitle">Module <span>Gallery</span></h2>
+            <div class="showcase-grid">
+                <div class="showcase-card">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="Wydad VS Raja.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag">[UI/UX & Systems]</div>
+                        <h3 data-key="showcase1Title">Main Menu UI System</h3>
+                        <p data-key="showcase1Desc">An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
-
-    <!-- Main Productions / Projects -->
-    <section id="projects">
-        <div class="section-header">
-            <h2 data-key="projectsTitle">Featured <span>Projects</span></h2>
-            <p data-key="projectsSubtitle">Large scale game development and productions.</p>
-        </div>
-
-        <div class="project-row">
-            <div class="project-item">
-                <div class="project-display">
-                    [ The Urblox Asset Showcase / Image Placeholder ]
+        <section id="projects">
+            <h2 class="section-title" data-key="projectsTitle">Featured <span>Projects</span></h2>
+            
+            <div class="grid-2">
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="project-tag" data-key="project1Tag">[Simulation / City-Life]</div>
+                        <h3>The Urblox: Life in the City</h3>
+                        <p data-key="project1Desc">An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.</p>
+                        <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" data-key="btnMore">Learn More</a>
+                    </div>
                 </div>
-                <div class="project-info">
-                    <span data-key="project1Tag">[Simulation / City-Life]</span>
-                    <h3 style="color: #fff;">The Urblox</h3>
-                    <p data-key="project1Desc">An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.</p>
-                    <a href="#" class="btn-primary" data-key="btnExplore">Explore</a>
-                </div>
-            </div>
-
-            <div class="project-item reverse">
-                <div class="project-display">
-                    [ Framework Engine Architecture UI Display ]
-                </div>
-                <div class="project-info">
-                    <span data-key="project2Tag">[System / UI Architecture]</span>
-                    <h3 data-key="project2Title">Dynamic UI Frameworks</h3>
-                    <p data-key="project2Desc">Developing responsive, modern UI design frameworks completely handled via Luau scripts. Fully optimized network replication for seamless framerates.</p>
-                    <a href="#" class="btn-secondary" data-key="btnMore">Learn More</a>
+                
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="project-tag" data-key="project2Tag">[System / UI Architecture]</div>
+                        <h3 data-key="project2Title">Dynamic UI Frameworks</h3>
+                        <p data-key="project2Desc">Developing responsive, modern UI design frameworks completely handled via Luau scripts. Fully optimized network replication for seamless framerates.</p>
+                        <a href="#" class="btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" data-key="btnExplore">Explore</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Framework Grid -->
-    <section id="skills">
-        <div class="section-header">
-            <h2>Technical <span>Skills</span></h2>
-            <p>Languages, platforms, and specialized development fields.</p>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-box">
-                <h3>Luau Scripting</h3>
-                <p>OOP, Script Architecture, Networking</p>
-            </div>
-            <div class="skill-box">
-                <h3>UI / UX Design</h3>
-                <p>Modern Interface Frameworks, Animations</p>
-            </div>
-            <div class="skill-box">
-                <h3>Backend Engineering</h3>
-                <p>DataStore Systems, ProfileService, Security</p>
-            </div>
-            <div class="skill-box">
-                <h3>Web/Git Tools</h3>
-                <p>GitHub Workflows, Web Deployments</p>
-            </div>
-        </div>
-    </section>
+        <section id="contact">
+            <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
+            
+            <div class="social-grid">
+                <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
+                        <span class="social-name">Roblox</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
 
-    <!-- Communications / Contact Area -->
-    <section id="contact">
-        <div class="contact-content">
-            <h2 data-key="contactTitle">Get In <span>Touch</span></h2>
-            <p data-key="contactSubtitle">Feel free to reach out for commissions, projects, or professional opportunities.</p>
-            <a href="mailto:contact@tf0u3lik.is-a.dev" class="btn-primary">contact@tf0u3lik.is-a.dev</a>
-        </div>
-    </section>
+                <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="DiscordIcon.png" class="social-icon" alt="Discord">
+                        <span class="social-name">Discord</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
 
-    <!-- Copyright Footer Area -->
-    <footer id="footerText">
-        tf0u3lik © 2026 • Developer Portfolio
-    </footer>
+                <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
+                        <span class="social-name">GitHub</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
 
-    <!-- Localization Script Handling -->
+                <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="XIcon.png" class="social-icon" alt="X">
+                        <span class="social-name">X / Twitter</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
+                        <span class="social-name">TikTok</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
+                        <span class="social-name">Twitch</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
+                    <div class="social-left">
+                        <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
+                        <span class="social-name">YouTube</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+
+                <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
+                    <div class="social-left">
+                        <img src="GmailIcon.png" class="social-icon" alt="Email">
+                        <span class="social-name">Email</span>
+                    </div>
+                    <span class="social-arrow">↗</span>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p data-key="footerText">microb © 2026 • Developer Portfolio</p>
+        </footer>
+
+    </div>
+
     <script>
         const translations = {
             en: {
-                navProjects: "Projects",
                 navWork: "Work",
+                navProjects: "Projects",
                 navSkills: "Skills",
                 navContact: "Contact",
                 statusText: "Available for commissions / hiring",
@@ -556,14 +675,9 @@
                 btnWork: "View My Work",
                 btnConnect: "Contact Me",
                 workTitle: "Module <span>Gallery</span>",
-                workSubtitle: "Video demonstrations of systems and mechanics I've developed.",
-                btnWatch: "Watch",
                 showcase1Title: "Main Menu UI System",
                 showcase1Desc: "An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.",
-                showcase2Title: "Advanced Core Systems",
-                showcase2Desc: "Modular system management architecture ensuring zero network latency and fully secure server-client replication.",
                 projectsTitle: "Featured <span>Projects</span>",
-                projectsSubtitle: "Large scale game development and productions.",
                 project1Tag: "[Simulation / City-Life]",
                 project1Desc: "An ambitious urban simulation project implementing complex gameplay systems, smooth roleplay elements, and a stylized, retro urban aesthetic.",
                 project2Tag: "[System / UI Architecture]",
@@ -572,12 +686,11 @@
                 btnMore: "Learn More",
                 btnExplore: "Explore",
                 contactTitle: "Get In <span>Touch</span>",
-                contactSubtitle: "Feel free to reach out for commissions, projects, or professional opportunities.",
-                footerText: "tf0u3lik © 2026 • Developer Portfolio"
+                footerText: "microb © 2026 • Developer Portfolio"
             },
             fr: {
-                navProjects: "Projets",
                 navWork: "Galerie",
+                navProjects: "Projets",
                 navSkills: "Compétences",
                 navContact: "Contact",
                 statusText: "Disponible pour des projets",
@@ -586,14 +699,9 @@
                 btnWork: "Voir mon travail",
                 btnConnect: "Me contacter",
                 workTitle: "Galerie de <span>Modules</span>",
-                workSubtitle: "Démonstrations vidéo des systèmes et mécaniques que j'ai développés.",
-                btnWatch: "Regarder",
                 showcase1Title: "Système UI Menu Principal",
                 showcase1Desc: "Un menu principal de stade immersif comprenant la sélection interactive d'équipe, l'affichage dynamique des contrôles et une boutique de Game Passes intégrée.",
-                showcase2Title: "Systèmes Core Avancés",
-                showcase2Desc: "Architecture de gestion modulaire garantissant une latence réseau nulle et une réplication serveur-client sécurisée.",
                 projectsTitle: "Projets <span>Majeurs</span>",
-                projectsSubtitle: "Développement et productions de jeux à grande échelle.",
                 project1Tag: "[Simulation / Ville]",
                 project1Desc: "Un projet ambitieux de simulation urbaine intégrant des mécaniques complexes, des interactions de rôles fluides, et une identité esthétique soignée et rétro.",
                 project2Tag: "[Système / Interface]",
@@ -602,34 +710,38 @@
                 btnMore: "En savoir plus",
                 btnExplore: "Découvrir",
                 contactTitle: "Discutons <span>Ensemble</span>",
-                contactSubtitle: "N'hésitez pas à me contacter pour des commandes, des projets ou des opportunités professionnelles.",
-                footerText: "tf0u3lik © 2026 • Portfolio de Développeur"
+                footerText: "microb © 2026 • Portfolio de Développeur"
             }
         };
 
-        let currentLang = 'en';
-        const langBtn = document.getElementById('langBtn');
-
-        function updateLanguage(lang) {
+        function applyLanguage(lang) {
+            const body = document.body;
+            const btn = document.getElementById('langBtn');
+            
+            body.setAttribute('lang', lang);
+            // If the site language is English, the button proposes to switch to "FR" and vice-versa
+            btn.innerText = lang === 'en' ? 'FR' : 'EN';
+            
             document.querySelectorAll('[data-key]').forEach(element => {
                 const key = element.getAttribute('data-key');
                 if (translations[lang][key]) {
-                    if (element.tagName === 'SPAN' || element.innerHTML.includes('<span>')) {
-                        const originalHTML = translations[lang][key];
-                        element.innerHTML = originalHTML;
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
+                    element.innerHTML = translations[lang][key];
                 }
             });
             
-            document.getElementById('footerText').textContent = translations[lang].footerText;
-            langBtn.textContent = lang === 'en' ? 'FR' : 'EN';
+            localStorage.setItem('preferred-lang', lang);
         }
 
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'fr' : 'en';
-            updateLanguage(currentLang);
+        function toggleLanguage() {
+            const currentLang = document.body.getAttribute('lang') || 'en';
+            const nextLang = currentLang === 'en' ? 'fr' : 'en';
+            applyLanguage(nextLang);
+        }
+
+        // Default setting: ALWAYS boot on English unless a personal preference was explicitly saved before
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-lang') || 'en';
+            applyLanguage(savedLang);
         });
     </script>
 </body>
