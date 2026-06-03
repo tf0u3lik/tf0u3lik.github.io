@@ -7,615 +7,1018 @@
     <link class="favicon" rel="icon" type="image/png" href="microb.png">
     
     <style>
-        :root {
-            --bg-color: #081308; 
-            --bg-overlay: rgba(8, 19, 8, 0.85); 
-            --card-bg: rgba(15, 30, 15, 0.65);
-            --accent-color: #10b981; 
-            --accent-glow: rgba(16, 185, 129, 0.25);
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: #1c2e1c;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('background.png') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-main);
-            line-height: 1.5;
-        }
-
-        /* Top Navigation Bar */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(8, 19, 8, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-color);
-        }
-
-        .verified-badge {
-            width: 16px;
-            height: 16px;
-            object-fit: contain;
-            vertical-align: middle;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        /* Language Switcher Button */
-        .lang-switcher {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .lang-switcher:hover {
-            border-color: var(--accent-color);
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 20px 60px 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr;
-            gap: 40px;
-            align-items: center;
-            min-height: 70vh;
-            margin-bottom: 80px;
-        }
-
-        .hero-left .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 25px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .hero-left .status-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #10b981;
-            border-radius: 50%;
-        }
-
-        .hero-left h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-        }
-
-        .hero-left h1 span {
-            color: var(--accent-color);
-        }
-
-        .hero-left .tags {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-family: monospace;
-            margin-bottom: 25px;
-        }
-
-        .hero-left .bio {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 35px;
-            max-width: 620px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .btn-primary:hover {
-            background-color: #059669;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-main);
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-            transition: background 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Hero Right - Avatar Box */
-        .hero-right {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .avatar-box {
-            position: relative;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 16px;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            backdrop-filter: blur(8px);
-        }
-
-        .avatar-box img.main-avatar {
-            width: 280px;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .avatar-caption {
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        .avatar-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .avatar-tag {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        .avatar-role {
-            font-size: 0.75rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 6px;
-            font-weight: 600;
-        }
-
-        /* Sections */
-        section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 40px;
-            letter-spacing: -0.02em;
-        }
-
-        .section-title span {
-            color: var(--accent-color);
-        }
-
-        /* Game Projects Stack Layout */
-        .projects-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        /* Game Project Showcase Style */
-        .game-showcase-container {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-        }
-
-        .game-banner-side {
-            width: 100%;
-            height: 100%;
-            min-height: 350px;
-            background: #000;
-        }
-
-        .game-banner-side img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .game-details-side {
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .game-stats-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .stat-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .stat-badge span {
-            color: var(--accent-color);
-            margin-right: 4px;
-        }
-
-        .game-details-side h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .game-details-side p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        /* Showcase / Work Gallery Section */
-        .showcase-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .showcase-header .section-title {
-            margin-bottom: 0;
-        }
-
-        /* Category Filter Tabs */
-        .filter-tabs {
-            display: flex;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 5px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 25px;
-        }
-
-        .showcase-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .showcase-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(16, 185, 129, 0.4);
-        }
-
-        .video-wrapper {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #000;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .video-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .btn-game-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent-color);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .btn-game-link:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        /* Grids & Cards */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .project-info {
-            padding: 30px;
-        }
-
-        .project-tag {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 10px;
-        }
-
-        /* Skills Marquee */
-        .skills-marquee {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            padding: 10px 0;
-            margin-bottom: 40px;
-            white-space: nowrap;
-        }
-
-        .skills-marquee::-webkit-scrollbar {
-            display: none;
-        }
-
-        .skill-badge {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        /* Social Grid */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 15px;
-        }
-
-        .social-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 16px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            backdrop-filter: blur(8px);
-            transition: all 0.2s ease;
-        }
-
-        .social-card:hover {
-            border-color: var(--accent-color);
-            background: rgba(16, 185, 129, 0.08);
-            transform: scale(1.02);
-        }
-
-        .social-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .social-icon {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
-        .social-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .social-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-
-        .social-handle {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 1px;
-        }
-
-        .social-arrow {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        footer {
-            margin-top: 60px;
-            padding: 30px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-left h1 {
-                font-size: 2.5rem;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .game-showcase-container {
-                grid-template-columns: 1fr;
-            }
-            .game-banner-side {
-                min-height: 200px;
-            }
-            .grid-2, .showcase-grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-right {
-                gap: 15px;
-            }
-            .showcase-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
+ :root {
+
+ --bg-color: #081308;
+
+ --bg-overlay: rgba(8, 19, 8, 0.85);
+
+ --card-bg: rgba(15, 30, 15, 0.65);
+
+ --accent-color: #10b981;
+
+ --accent-glow: rgba(16, 185, 129, 0.25);
+
+ --text-main: #f3f4f6;
+
+ --text-muted: #9ca3af;
+
+ --border-color: #1c2e1c;
+
+ 
+ }
+
+
+
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+ }
+
+
+ html {
+ scroll-behavior: smooth;
+
+ }
+
+
+ body {
+ background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('background.png') no-repeat center center fixed;
+ background-size: cover;
+ color: var(--text-main);
+ line-height: 1.5;
+
+ }
+
+
+ nav {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ background: rgba(8, 19, 8, 0.85);
+ backdrop-filter: blur(12px);
+ border-bottom: 1px solid var(--border-color);
+ z-index: 1000;
+
+ }
+
+
+ .nav-container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 15px 20px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+
+ }
+
+
+ .logo {
+ font-weight: 700;
+ font-size: 1.2rem;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+
+ }
+
+
+ .logo-dot {
+ width: 8px;
+ height: 8px;
+ background-color: var(--accent-color);
+ border-radius: 50%;
+ box-shadow: 0 0 8px var(--accent-color);
+
+ }
+
+
+ .verified-badge {
+ width: 16px;
+ height: 16px;
+ object-fit: contain;
+ vertical-align: middle;
+
+ }
+
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 30px;
+
+ }
+
+
+ .nav-links {
+ display: flex;
+ gap: 25px;
+ list-style: none;
+
+ }
+
+
+ .nav-links a {
+ color: var(--text-muted);
+ text-decoration: none;
+ font-size: 0.9rem;
+ font-weight: 500;
+ transition: color 0.2s;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+
+ }
+
+
+ .nav-links a:hover {
+ color: var(--text-main);
+
+ }
+
+
+ .lang-switcher {
+ background: rgba(255, 255, 255, 0.05);
+ border: 1px solid var(--border-color);
+ color: var(--text-main);
+ padding: 6px 12px;
+ border-radius: 6px;
+ font-size: 0.8rem;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s ease;
+
+ }
+
+
+ .lang-switcher:hover {
+ border-color: var(--accent-color);
+ background: rgba(16, 185, 129, 0.1);
+
+ }
+
+
+ .container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 120px 20px 60px 20px;
+
+ }
+
+
+ .hero {
+ display: grid;
+ grid-template-columns: 1.6fr 1fr;
+ gap: 40px;
+ align-items: center;
+ min-height: 70vh;
+ margin-bottom: 80px;
+
+ }
+
+
+ .hero-left .status {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ background: rgba(16, 185, 129, 0.1);
+ color: #10b981;
+ padding: 6px 14px;
+ border-radius: 30px;
+ font-size: 0.8rem;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ margin-bottom: 25px;
+ border: 1px solid rgba(16, 185, 129, 0.2);
+
+ }
+
+
+ .hero-left .status-dot {
+ width: 6px;
+ height: 6px;
+ background-color: #10b981;
+ border-radius: 50%;
+
+ }
+
+
+ .hero-left h1 {
+ font-size: 3.5rem;
+ line-height: 1.1;
+ font-weight: 800;
+ letter-spacing: -0.03em;
+ margin-bottom: 20px;
+
+ }
+
+
+ .hero-left h1 span {
+ color: var(--accent-color);
+
+ }
+
+
+ .hero-left .tags {
+ color: var(--text-muted);
+ font-size: 0.9rem;
+ font-family: monospace;
+ margin-bottom: 25px;
+
+ }
+
+
+ .hero-left .bio {
+ font-size: 1.1rem;
+ color: var(--text-muted);
+ margin-bottom: 35px;
+ max-width: 620px;
+
+ }
+
+
+ .hero-buttons {
+ display: flex;
+ gap: 15px;
+
+ }
+
+
+ .btn-primary {
+ background-color: var(--accent-color);
+ color: white;
+ padding: 12px 28px;
+ border-radius: 8px;
+ text-decoration: none;
+ font-weight: 600;
+ transition: background 0.2s;
+
+ }
+
+
+ .btn-primary:hover {
+ background-color: #059669;
+
+ }
+
+
+ .btn-secondary {
+ background-color: transparent;
+ color: var(--text-main);
+ padding: 12px 28px;
+ border-radius: 8px;
+ text-decoration: none;
+ font-weight: 600;
+ border: 1px solid var(--border-color);
+ transition: background 0.2s;
+
+ }
+
+
+ .btn-secondary:hover {
+ background-color: rgba(255, 255, 255, 0.05);
+
+ }
+
+
+ .hero-right {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ }
+
+
+ .avatar-box {
+ position: relative;
+ background: var(--card-bg);
+ border: 1px solid var(--border-color);
+ padding: 16px;
+ border-radius: 16px;
+ box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+ backdrop-filter: blur(8px);
+
+ }
+
+
+ .avatar-box img.main-avatar {
+ width: 280px;
+ height: 280px;
+ object-fit: cover;
+ border-radius: 12px;
+ border: 1px solid rgba(255,255,255,0.05);
+ box-shadow: 0 0 20px var(--accent-glow);
+
+ }
+
+
+ .avatar-caption {
+ margin-top: 15px;
+ text-align: center;
+
+ }
+
+
+ .avatar-name {
+ font-weight: 700;
+ font-size: 1.1rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 6px;
+
+ }
+
+
+ .avatar-tag {
+ font-size: 0.85rem;
+ color: var(--text-muted);
+ margin-top: 2px;
+
+ }
+
+
+ .avatar-role {
+ font-size: 0.75rem;
+ color: var(--accent-color);
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ margin-top: 6px;
+ font-weight: 600;
+
+ }
+
+
+ section {
+ padding: 60px 0;
+
+ }
+
+
+ .section-title {
+ font-size: 2rem;
+ font-weight: 800;
+ margin-bottom: 40px;
+ letter-spacing: -0.02em;
+
+ }
+
+
+ .section-title span {
+ color: var(--accent-color);
+
+ }
+
+
+ .projects-stack {
+ display: flex;
+ flex-direction: column;
+ gap: 40px;
+
+ }
+
+
+ .game-showcase-container {
+ background: var(--card-bg);
+ border: 1px solid var(--border-color);
+ border-radius: 16px;
+ overflow: hidden;
+ backdrop-filter: blur(8px);
+ display: grid;
+ grid-template-columns: 1.2fr 1fr;
+
+ }
+
+
+ .game-banner-side {
+ width: 100%;
+ height: 100%;
+ min-height: 350px;
+ background: #000;
+
+ }
+
+
+ .game-banner-side img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+
+ }
+
+
+ .game-details-side {
+ padding: 40px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+
+ }
+
+
+ .game-stats-row {
+ display: flex;
+ gap: 15px;
+ margin-bottom: 20px;
+ flex-wrap: wrap;
+
+ }
+
+
+ .stat-badge {
+ background: rgba(255, 255, 255, 0.05);
+ border: 1px solid var(--border-color);
+ padding: 6px 14px;
+ border-radius: 6px;
+ font-size: 0.85rem;
+ font-weight: 600;
+ color: var(--text-main);
+
+ }
+
+
+ .stat-badge span {
+ color: var(--accent-color);
+ margin-right: 4px;
+
+ }
+
+
+ .game-details-side h3 {
+ font-size: 1.8rem;
+ margin-bottom: 15px;
+ font-weight: 800;
+
+ }
+
+
+ .game-details-side p {
+ color: var(--text-muted);
+ font-size: 1rem;
+ margin-bottom: 25px;
+ line-height: 1.6;
+
+ }
+
+
+ .showcase-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 30px;
+ flex-wrap: wrap;
+ gap: 20px;
+
+ }
+
+
+ .showcase-header .section-title {
+ margin-bottom: 0;
+
+ }
+
+
+ .filter-tabs {
+ display: flex;
+ gap: 10px;
+ background: rgba(0, 0, 0, 0.2);
+ padding: 5px;
+ border-radius: 8px;
+ border: 1px solid var(--border-color);
+
+ }
+
+
+ .filter-btn {
+ background: transparent;
+ border: none;
+ color: var(--text-muted);
+ padding: 8px 16px;
+ border-radius: 6px;
+ font-size: 0.85rem;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s ease;
+
+ }
+
+
+ .filter-btn.active, .filter-btn:hover {
+ background: var(--accent-color);
+ color: white;
+
+ }
+
+
+ .showcase-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+ gap: 25px;
+
+ }
+
+
+ .showcase-card {
+ background: var(--card-bg);
+ border: 1px solid var(--border-color);
+ border-radius: 12px;
+ overflow: hidden;
+ backdrop-filter: blur(8px);
+ transition: transform 0.2s, border-color 0.2s;
+
+ }
+
+
+ .showcase-card:hover {
+ transform: translateY(-4px);
+ border-color: rgba(16, 185, 129, 0.4);
+
+ }
+
+
+ .video-wrapper {
+ width: 100%;
+ aspect-ratio: 16/9;
+ background: #000;
+ border-bottom: 1px solid var(--border-color);
+
+ }
+
+
+ .video-wrapper video {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+
+ }
+
+
+ .card-actions {
+ display: flex;
+ gap: 10px;
+ margin-top: 15px;
+
+ }
+
+
+ .btn-game-link {
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ background: rgba(16, 185, 129, 0.1);
+ color: var(--accent-color);
+ border: 1px solid rgba(16, 185, 129, 0.2);
+ padding: 6px 14px;
+ border-radius: 6px;
+ font-size: 0.8rem;
+ font-weight: 600;
+ text-decoration: none;
+ transition: all 0.2s ease;
+
+ }
+
+
+ .btn-game-link:hover {
+ background: var(--accent-color);
+ color: white;
+
+ }
+
+
+ .grid-2 {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 25px;
+
+ }
+
+
+ .project-info {
+ padding: 30px;
+
+ }
+
+
+ .project-tag {
+ font-size: 0.75rem;
+ font-weight: 700;
+ color: var(--accent-color);
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ margin-bottom: 10px;
+
+ }
+
+
+ .skills-marquee {
+ display: flex;
+ gap: 15px;
+ overflow-x: auto;
+ padding: 10px 0;
+ margin-bottom: 40px;
+ white-space: nowrap;
+
+ }
+
+
+ .skills-marquee::-webkit-scrollbar {
+ display: none;
+
+ }
+
+
+ .skill-badge {
+ background: var(--card-bg);
+ border: 1px solid var(--border-color);
+ padding: 8px 18px;
+ border-radius: 6px;
+ font-size: 0.85rem;
+ font-weight: 600;
+ color: var(--text-muted);
+
+ }
+
+
+ .social-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+ gap: 15px;
+
+ }
+
+
+ .social-card {
+ background: var(--card-bg);
+ border: 1px solid var(--border-color);
+ padding: 16px 20px;
+ border-radius: 10px;
+ text-decoration: none;
+ color: var(--text-main);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ backdrop-filter: blur(8px);
+ transition: all 0.2s ease;
+
+ }
+
+
+ .social-card:hover {
+ border-color: var(--accent-color);
+ background: rgba(16, 185, 129, 0.08);
+ transform: scale(1.02);
+
+ }
+
+
+ .social-left {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+
+ }
+
+
+ .social-icon {
+ width: 28px;
+ height: 28px;
+ object-fit: contain;
+
+ }
+
+
+ .social-details {
+ display: flex;
+ flex-direction: column;
+
+ }
+
+
+ .social-name {
+ font-weight: 600;
+ font-size: 0.95rem;
+ color: var(--text-main);
+
+ }
+
+
+ .social-handle {
+ font-size: 0.8rem;
+ color: var(--text-muted);
+ margin-top: 1px;
+
+ }
+
+
+ .social-arrow {
+ color: var(--text-muted);
+ font-size: 0.85rem;
+
+ }
+
+
+ footer {
+ margin-top: 60px;
+ padding: 30px 0;
+ text-align: center;
+ border-top: 1px solid var(--border-color);
+ color: var(--text-muted);
+ font-size: 0.85rem;
+
+ }
+
+
+
+ /* GUI Redesign Section */
+ .redesign-showcase {
+ display: flex;
+ flex-direction: column;
+ gap: 30px;
+
+ }
+
+
+ .redesign-projects-stack {
+ display: flex;
+ flex-direction: column;
+ gap: 50px;
+
+ }
+
+
+ .redesign-project-card {
+ background: var(--card-bg);
+ border: 1px solid var(--border-color);
+ border-radius: 16px;
+ overflow: hidden;
+ backdrop-filter: blur(8px);
+ padding: 30px;
+ display: flex;
+ flex-direction: column;
+ gap: 25px;
+
+ }
+
+
+ .redesign-project-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;
+ gap: 15px;
+
+ }
+
+
+ .redesign-project-meta {
+ display: flex;
+ flex-direction: column;
+ gap: 6px;
+
+ }
+
+
+ .redesign-project-title {
+ font-size: 1.4rem;
+ font-weight: 800;
+ letter-spacing: -0.02em;
+
+ }
+
+
+ .redesign-game-btn {
+ font-size: 0.85rem;
+ padding: 8px 18px;
+ white-space: nowrap;
+
+ }
+
+
+ .redesign-comparison {
+ display: grid;
+ grid-template-columns: 1fr auto 1fr;
+ align-items: stretch;
+ background: rgba(0,0,0,0.2);
+ border: 1px solid var(--border-color);
+ border-radius: 12px;
+ overflow: hidden;
+
+ }
+
+
+ .redesign-side {
+ display: flex;
+ flex-direction: column;
+
+ }
+
+
+ .redesign-label {
+ padding: 10px 20px;
+ font-size: 0.7rem;
+ font-weight: 800;
+ letter-spacing: 0.12em;
+ text-align: center;
+
+ }
+
+
+ .before-label {
+ background: rgba(239,68,68,0.12);
+ color: #ef4444;
+ border-bottom: 1px solid rgba(239,68,68,0.2);
+
+ }
+
+
+ .after-label {
+ background: rgba(16,185,129,0.12);
+ color: var(--accent-color);
+ border-bottom: 1px solid rgba(16,185,129,0.2);
+
+ }
+
+
+ .redesign-video {
+ border-radius: 0;
+ border-bottom: none;
+ flex: 1;
+
+ }
+
+
+ .redesign-divider {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: var(--border-color);
+ width: 1px;
+ position: relative;
+
+ }
+
+
+ .redesign-vs {
+ position: absolute;
+ background: var(--bg-color);
+ border: 1px solid var(--border-color);
+ color: var(--text-muted);
+ font-size: 0.7rem;
+ font-weight: 800;
+ letter-spacing: 0.1em;
+ padding: 8px 10px;
+ border-radius: 6px;
+ z-index: 1;
+
+ }
+
+
+ .redesign-details {
+ display: grid;
+ grid-template-columns: repeat(2,1fr);
+ gap: 15px;
+
+ }
+
+
+ .redesign-detail-card {
+ background: var(--card-bg);
+ border: 1px solid var(--border-color);
+ border-radius: 12px;
+ padding: 20px;
+ display: flex;
+ gap: 15px;
+ align-items: flex-start;
+ backdrop-filter: blur(8px);
+ transition: border-color 0.2s, transform 0.2s;
+
+ }
+
+
+ .redesign-detail-card:hover {
+ border-color: rgba(16,185,129,0.4);
+ transform: translateY(-3px);
+
+ }
+
+
+ .detail-icon {
+ font-size: 1.4rem;
+ flex-shrink: 0;
+ margin-top: 2px;
+
+ }
+
+
+ .detail-title {
+ font-weight: 700;
+ font-size: 0.95rem;
+ margin-bottom: 6px;
+
+ }
+
+
+ .detail-desc {
+ font-size: 0.85rem;
+ color: var(--text-muted);
+ line-height: 1.5;
+
+ }
+
+
+
+ @media (max-width: 768px) {
+
+ .hero {
+ grid-template-columns: 1fr;
+ text-align: center;
+
+ }
+
+
+ .hero-left h1 {
+ font-size: 2.5rem;
+
+ }
+
+
+ .hero-buttons {
+ justify-content: center;
+
+ }
+
+
+ .game-showcase-container {
+ grid-template-columns: 1fr;
+
+ }
+
+
+ .game-banner-side {
+ min-height: 200px;
+
+ }
+
+
+ .grid-2, .showcase-grid {
+ grid-template-columns: 1fr;
+
+ }
+
+
+ .nav-right {
+ gap: 15px;
+
+ }
+
+
+ .showcase-header {
+ flex-direction: column;
+ align-items: flex-start;
+
+ }
+
+
+ .redesign-comparison {
+ grid-template-columns: 1fr;
+
+ }
+
+
+ .redesign-divider {
+ width: 100%;
+ height: 1px;
+
+ }
+
+
+ .redesign-vs {
+ top: -14px;
+ left: 50%;
+ transform: translateX(-50%);
+
+ }
+
+
+ .redesign-details {
+ grid-template-columns: 1fr;
+
+ }
+
+
+ 
+ }
+
+
+ </style>
 </head>
 <body id="home">
 
-    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -627,9 +1030,9 @@
                     <li><a href="#home" data-key="navHome">Home</a></li>
                     <li><a href="#projects" data-key="navProjects">Projects</a></li>
                     <li><a href="#work" data-key="navWork">Work</a></li>
+                    <li><a href="#redesign" data-key="navRedesign">Redesign</a></li>
                     <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
-                <!-- Language Toggle Button -->
                 <button class="lang-switcher" onclick="toggleLanguage()" id="langBtn">FR</button>
             </div>
         </div>
@@ -637,34 +1040,25 @@
 
     <div class="container">
         
-        <!-- Hero Section -->
         <main class="hero">
             <div class="hero-left">
                 <div class="status">
                     <div class="status-dot"></div> 
                     <span data-key="statusText">Available for commissions / hiring</span>
                 </div>
-                
                 <h1 data-key="heroTitle">Designing <span>High-Performance Experiences</span> on Roblox.</h1>
-                
                 <div class="tags">// Luau Scripting • UI/UX Design • System Architecture</div>
-                
                 <p class="bio" data-key="heroBio">Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.</p>
-                
                 <div class="hero-buttons">
                     <a href="#projects" class="btn-primary" data-key="btnWork">View My Work</a>
                     <a href="#contact" class="btn-secondary" data-key="btnConnect">Contact Me</a>
                 </div>
             </div>
-            
             <div class="hero-right">
                 <div class="avatar-box">
                     <img src="avatar.png" class="main-avatar" alt="Roblox Avatar microb">
                     <div class="avatar-caption">
-                        <div class="avatar-name">
-                            microb 
-                            <img src="VerifiedIcon.png" class="verified-badge" alt="Verified">
-                        </div>
+                        <div class="avatar-name">microb <img src="VerifiedIcon.png" class="verified-badge" alt="Verified"></div>
                         <div class="avatar-tag">@tfou3iik</div>
                         <div class="avatar-role">Lead Developer</div>
                     </div>
@@ -672,178 +1066,220 @@
             </div>
         </main>
 
-        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">Active <span>Projects</span></h2>
-            
             <div class="projects-stack">
-                <!-- Project 1: Wydad vs Raja -->
                 <div class="game-showcase-container">
-                    <div class="game-banner-side">
-                        <img src="WydadVSRajaBanner.png" alt="Wydad Vs Raja Game Banner">
-                    </div>
+                    <div class="game-banner-side"><img src="WydadVSRajaBanner.png" alt="Wydad Vs Raja Game Banner"></div>
                     <div class="game-details-side">
                         <div class="project-tag" data-key="project1Tag">[Stadium/Simulation & Combat]</div>
                         <h3>Wydad Vs Raja (Stadium Donor)</h3>
-                        
                         <div class="game-stats-row">
                             <div class="stat-badge"><span data-key="statLikes">Likes:</span> 70%</div>
                             <div class="stat-badge"><span data-key="statVisits">Visits:</span> 8K+</div>
                             <div class="stat-badge"><span data-key="statActive">Active:</span> 1+</div>
                         </div>
-
                         <p data-key="gameProjectDesc">An immersive stadium experience featuring tactical combat, team dynamics, fully scripted UI frameworks, and fluid user systems built around the legendary Moroccan derby clash.</p>
-                        
-                        <div>
-                            <a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-primary" data-key="btnPlayGame">Play on Roblox 🎮</a>
-                        </div>
+                        <div><a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-primary" data-key="btnPlayGame">Play on Roblox 🎮</a></div>
                     </div>
                 </div>
-
-                <!-- Project 2: The Urblox -->
                 <div class="game-showcase-container">
-                    <div class="game-banner-side">
-                        <img src="TheUrbzBanner.png" alt="The Urblox Game Banner">
-                    </div>
+                    <div class="game-banner-side"><img src="TheUrbzBanner.png" alt="The Urblox Game Banner"></div>
                     <div class="game-details-side">
                         <div class="project-tag" data-key="project2Tag">[Roleplay / Urban Life]</div>
                         <h3>The Urblox: Stars in the City</h3>
-                        
                         <div class="game-stats-row">
                             <div class="stat-badge"><span data-key="statStatus">Status:</span> <span data-key="statDev">In Development...</span></div>
                             <div class="stat-badge"><span data-key="statLikes">Likes:</span> --</div>
                             <div class="stat-badge"><span data-key="statActive">Active:</span> 0</div>
                         </div>
-
                         <p data-key="project2Desc">An upcoming retro urban simulation project focusing on city lifestyle, custom interactive systems, and deep visual aesthetics.</p>
-                        
-                        <div>
-                            <span class="btn-secondary" style="cursor: not-allowed; opacity: 0.7;" data-key="btnComingSoon">Coming Soon 🚀</span>
-                        </div>
+                        <div><span class="btn-secondary" style="cursor: not-allowed; opacity: 0.7;" data-key="btnComingSoon">Coming Soon 🚀</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Showcase / Work Gallery Section -->
         <section id="work">
             <div class="showcase-header">
                 <h2 class="section-title" data-key="workTitle">Module <span>Gallery</span></h2>
-
-                <!-- Filter tabs by specific Game Projects -->
                 <div class="filter-tabs">
                     <button class="filter-btn active" onclick="filterGallery(this, 'all')" data-key="filterAll">All</button>
                     <button class="filter-btn" onclick="filterGallery(this, 'wydad-raja')">Wydad Vs Raja</button>
                     <button class="filter-btn" onclick="filterGallery(this, 'the-urblox')">The Urblox</button>
                 </div>
             </div>
-
             <div class="showcase-grid" id="galleryGrid">
-
-                <!-- === THE URBLOX CARDS === -->
-
-                <!-- Card 1: Main Menu Initialization -->
                 <div class="showcase-card" data-game="the-urblox">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="TheUrblox_MainMenu.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="TheUrblox_MainMenu.mp4" type="video/mp4"></video></div>
                     <div class="project-info">
                         <div class="project-tag">[UI/UX & Core Systems]</div>
                         <h3 data-key="urbShowcase1Title">Main Menu Initialization</h3>
                         <p data-key="urbShowcase1Desc">Async loading system with an interactive welcome screen and smooth navigation flow for The Urblox.</p>
                     </div>
                 </div>
-
-                <!-- Card 2: Map Selection Interface -->
                 <div class="showcase-card" data-game="the-urblox">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="TheUrblox_MapSelect.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="TheUrblox_MapSelect.mp4" type="video/mp4"></video></div>
                     <div class="project-info">
                         <div class="project-tag">[UI/UX & Scripting]</div>
                         <h3 data-key="urbShowcase2Title">Map Selection Interface</h3>
                         <p data-key="urbShowcase2Desc">Interactive zone selection system with click detection on GUI graphical elements.</p>
                     </div>
                 </div>
-
-                <!-- Card 3: Character Customizer -->
                 <div class="showcase-card" data-game="the-urblox">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="TheUrblox_Customizer.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="TheUrblox_Customizer.mp4" type="video/mp4"></video></div>
                     <div class="project-info">
                         <div class="project-tag">[System Architecture]</div>
                         <h3 data-key="urbShowcase3Title">Character Customizer</h3>
                         <p data-key="urbShowcase3Desc">Advanced avatar customization: gender, color palette and dynamic accessories for player characters.</p>
                     </div>
                 </div>
-
-                <!-- Card 4: Registration & Keyboard System -->
                 <div class="showcase-card" data-game="the-urblox">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="TheUrblox_VirtualKeyboard.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="TheUrblox_VirtualKeyboard.mp4" type="video/mp4"></video></div>
                     <div class="project-info">
                         <div class="project-tag">[Networking & UI]</div>
                         <h3 data-key="urbShowcase4Title">Registration & Keyboard System</h3>
                         <p data-key="urbShowcase4Desc">Interactive virtual keyboard for secure input of the player character's first and last name.</p>
                     </div>
                 </div>
-
-                <!-- === WYDAD VS RAJA CARDS === -->
-
-                <!-- Card 5: UI System Menu -->
                 <div class="showcase-card" data-game="wydad-raja">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="Wydad VS Raja.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="Wydad VS Raja.mp4" type="video/mp4"></video></div>
                     <div class="project-info">
                         <div class="project-tag">[UI/UX & Systems]</div>
                         <h3 data-key="showcase1Title">Main Menu UI System</h3>
                         <p data-key="showcase1Desc">An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.</p>
-                        <div class="card-actions">
-                            <a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-game-link">🎮 Game</a>
-                        </div>
+                        <div class="card-actions"><a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-game-link">🎮 Game</a></div>
                     </div>
                 </div>
-
-                <!-- Card 6: Combat & Movement Animations -->
                 <div class="showcase-card" data-game="wydad-raja">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="CombatAnimation.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="CombatAnimation.mp4" type="video/mp4"></video></div>
                     <div class="project-info">
                         <div class="project-tag">[Animation]</div>
                         <h3 data-key="showcase2Title">Combat & Movement System</h3>
                         <p data-key="showcase2Desc">Fluid custom animations featuring combat stance, aggressive machete running cycles, and smooth crouching behaviors designed for tactical urban engagement.</p>
-                        <div class="card-actions">
-                            <a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-game-link">🎮 Game</a>
+                        <div class="card-actions"><a href="https://www.roblox.com/games/123691813252806/Wydad-Vs-Raja" target="_blank" class="btn-game-link">🎮 Game</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GUI Redesign Section — extensible, 1 card par projet -->
+        <section id="redesign">
+            <h2 class="section-title" data-key="redesignTitle">GUI <span>Redesign</span></h2>
+            <p style="color:var(--text-muted);margin-top:-25px;margin-bottom:40px;font-size:1rem;" data-key="redesignSubtitle">Before &amp; after comparisons across multiple project redesigns.</p>
+
+            <div class="redesign-projects-stack">
+
+                <!-- ═══════════════════════════════════════
+                     REDESIGN CARD #1 — Steel Ball Race
+                     Pour ajouter un projet : duplique ce bloc
+                ══════════════════════════════════════════ -->
+                <div class="redesign-project-card">
+
+                    <div class="redesign-project-header">
+                        <div class="redesign-project-meta">
+                            <div class="project-tag">[UI/UX Redesign &amp; Luau Scripting]</div>
+                            <h3 class="redesign-project-title">Steel Ball Race — HUD &amp; GUI Overhaul</h3>
+                        </div>
+                        <a href="https://www.roblox.com/games/121216647329204/Steel-Ball-Race" target="_blank" class="btn-game-link redesign-game-btn">🎮 Play on Roblox</a>
+                    </div>
+
+                    <div class="redesign-comparison">
+                        <div class="redesign-side">
+                            <div class="redesign-label before-label" data-key="redesignBefore">BEFORE</div>
+                            <div class="video-wrapper redesign-video">
+                                <video controls preload="metadata" loop><source src="before.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                        <div class="redesign-divider"><div class="redesign-vs">VS</div></div>
+                        <div class="redesign-side">
+                            <div class="redesign-label after-label" data-key="redesignAfter">AFTER</div>
+                            <div class="video-wrapper redesign-video">
+                                <video controls preload="metadata" loop><source src="after.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="redesign-details">
+                        <div class="redesign-detail-card">
+                            <div class="detail-icon">🎨</div>
+                            <div class="detail-content">
+                                <div class="detail-title" data-key="redesignDetail1Title">Full GUI Overhaul</div>
+                                <div class="detail-desc" data-key="redesignDetail1Desc">Every element rebuilt from scratch: ProfileCard, CashCard, QueuePanel, Shop &amp; Settings buttons all received a unified dark theme with UI gradients, rounded corners and consistent typography.</div>
+                            </div>
+                        </div>
+                        <div class="redesign-detail-card">
+                            <div class="detail-icon">✨</div>
+                            <div class="detail-content">
+                                <div class="detail-title" data-key="redesignDetail2Title">UI Gradients &amp; Polish</div>
+                                <div class="detail-desc" data-key="redesignDetail2Desc">UIGradient on every card and button — Shop went from a plain black square to a styled beige/gold rectangle with icon. Settings button received a matching dark gradient with rounded styling.</div>
+                            </div>
+                        </div>
+                        <div class="redesign-detail-card">
+                            <div class="detail-icon">⚡</div>
+                            <div class="detail-content">
+                                <div class="detail-title" data-key="redesignDetail3Title">HUD Animations — Luau Script</div>
+                                <div class="detail-desc" data-key="redesignDetail3Desc">Pure LocalScript: TweenService slides each HUD element off-screen in its own direction using AbsoluteSize-based offsets, fades both OpenBtns, tweens Lighting BlurEffect intensity and camera FieldOfView for a cinematic feel. Fully reversed on panel close.</div>
+                            </div>
+                        </div>
+                        <div class="redesign-detail-card">
+                            <div class="detail-icon">📐</div>
+                            <div class="detail-content">
+                                <div class="detail-title" data-key="redesignDetail4Title">Structured Layout</div>
+                                <div class="detail-desc" data-key="redesignDetail4Desc">ProfileCard top-left (larger &amp; more airy), CashCard bottom-left with $ icon, QueuePanel bottom-right, Shop top-right, Settings bottom-right, Race Lobby status bottom-center.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- FIN CARD #1 -->
+
+                <!-- ═══════════════════════════════════════
+                     REDESIGN CARD #2 — décommenter pour ajouter
+                ══════════════════════════════════════════ -->
+                <!--
+                <div class="redesign-project-card">
+                    <div class="redesign-project-header">
+                        <div class="redesign-project-meta">
+                            <div class="project-tag">[UI/UX Redesign &amp; Luau Scripting]</div>
+                            <h3 class="redesign-project-title">Nom du Projet — Description</h3>
+                        </div>
+                        <a href="LIEN_DU_JEU" target="_blank" class="btn-game-link redesign-game-btn">🎮 Play on Roblox</a>
+                    </div>
+                    <div class="redesign-comparison">
+                        <div class="redesign-side">
+                            <div class="redesign-label before-label">BEFORE</div>
+                            <div class="video-wrapper redesign-video"><video controls preload="metadata" loop><source src="before2.mp4" type="video/mp4"></video></div>
+                        </div>
+                        <div class="redesign-divider"><div class="redesign-vs">VS</div></div>
+                        <div class="redesign-side">
+                            <div class="redesign-label after-label">AFTER</div>
+                            <div class="video-wrapper redesign-video"><video controls preload="metadata" loop><source src="after2.mp4" type="video/mp4"></video></div>
+                        </div>
+                    </div>
+                    <div class="redesign-details">
+                        <div class="redesign-detail-card">
+                            <div class="detail-icon">🎨</div>
+                            <div class="detail-content">
+                                <div class="detail-title">Changement 1</div>
+                                <div class="detail-desc">Description du changement.</div>
+                            </div>
+                        </div>
+                        <div class="redesign-detail-card">
+                            <div class="detail-icon">⚡</div>
+                            <div class="detail-content">
+                                <div class="detail-title">Changement 2</div>
+                                <div class="detail-desc">Description du changement.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                -->
+                <!-- FIN CARD #2 -->
 
             </div>
         </section>
 
-        <!-- Skills Marquee -->
         <div class="skills-marquee" id="skills">
             <div class="skill-badge"># Luau</div>
             <div class="skill-badge"># Roblox Studio</div>
@@ -854,194 +1290,122 @@
             <div class="skill-badge"># OOP (Object-Oriented)</div>
         </div>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">Get In <span>Touch</span></h2>
-            
             <div class="social-grid">
-                <!-- Roblox -->
                 <a href="https://www.roblox.com/fr/users/1932493389/profile" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="RobloxIcon.png" class="social-icon" alt="Roblox">
-                        <div class="social-details">
-                            <span class="social-name">Roblox</span>
-                            <span class="social-handle">@tfou3iik</span>
-                        </div>
-                    </div>
+                    <div class="social-left"><img src="RobloxIcon.png" class="social-icon" alt="Roblox"><div class="social-details"><span class="social-name">Roblox</span><span class="social-handle">@tfou3iik</span></div></div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- Discord -->
                 <a href="https://discord.com/users/236851925625208832" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="DiscordIcon.png" class="social-icon" alt="Discord">
-                        <div class="social-details">
-                            <span class="social-name">Discord</span>
-                            <span class="social-handle">@tf0u3l1k</span>
-                        </div>
-                    </div>
+                    <div class="social-left"><img src="DiscordIcon.png" class="social-icon" alt="Discord"><div class="social-details"><span class="social-name">Discord</span><span class="social-handle">@tf0u3l1k</span></div></div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- GitHub -->
                 <a href="https://github.com/tf0u3lik" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="GitHubIcon.png" class="social-icon" alt="GitHub">
-                        <div class="social-details">
-                            <span class="social-name">GitHub</span>
-                            <span class="social-handle">@tf0u3lik</span>
-                        </div>
-                    </div>
+                    <div class="social-left"><img src="GitHubIcon.png" class="social-icon" alt="GitHub"><div class="social-details"><span class="social-name">GitHub</span><span class="social-handle">@tf0u3lik</span></div></div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- X -->
                 <a href="https://x.com/tf0u3Iik" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="XIcon.png" class="social-icon" alt="X">
-                        <div class="social-details">
-                            <span class="social-name">X / Twitter</span>
-                            <span class="social-handle">@tf0u3Iik</span>
-                        </div>
-                    </div>
+                    <div class="social-left"><img src="XIcon.png" class="social-icon" alt="X"><div class="social-details"><span class="social-name">X / Twitter</span><span class="social-handle">@tf0u3Iik</span></div></div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@tradernemya_sab" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="TikTokIcon.png" class="social-icon" alt="TikTok">
-                        <div class="social-details">
-                            <span class="social-name">TikTok</span>
-                            <span class="social-handle">@tradernemya_sab</span>
-                        </div>
-                    </div>
+                    <div class="social-left"><img src="TikTokIcon.png" class="social-icon" alt="TikTok"><div class="social-details"><span class="social-name">TikTok</span><span class="social-handle">@tradernemya_sab</span></div></div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- Twitch -->
                 <a href="https://www.twitch.tv/tf0u31ik" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="TwitchIcon.png" class="social-icon" alt="Twitch">
-                        <div class="social-details">
-                            <span class="social-name">Twitch</span>
-                            <span class="social-handle">@tf0u31ik</span>
-                        </div>
-                    </div>
+                    <div class="social-left"><img src="TwitchIcon.png" class="social-icon" alt="Twitch"><div class="social-details"><span class="social-name">Twitch</span><span class="social-handle">@tf0u31ik</span></div></div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- YouTube -->
                 <a href="https://www.youtube.com/@tf0u31k" target="_blank" class="social-card">
-                    <div class="social-left">
-                        <img src="YoutubeIcon.png" class="social-icon" alt="YouTube">
-                        <div class="social-details">
-                            <span class="social-name">YouTube</span>
-                            <span class="social-handle">@tf0u31k</span>
-                        </div>
-                    </div>
+                    <div class="social-left"><img src="YoutubeIcon.png" class="social-icon" alt="YouTube"><div class="social-details"><span class="social-name">YouTube</span><span class="social-handle">@tf0u31k</span></div></div>
                     <span class="social-arrow">↗</span>
                 </a>
-
-                <!-- Email -->
                 <a href="mailto:enfantdunetpro@gmail.com" class="social-card">
-                    <div class="social-left">
-                        <img src="GmailIcon.png" class="social-icon" alt="Email">
-                        <div class="social-details">
-                            <span class="social-name">Email</span>
-                            <span class="social-handle">enfantdunetpro@gmail.com</span>
-                        </div>
-                    </div>
+                    <div class="social-left"><img src="GmailIcon.png" class="social-icon" alt="Email"><div class="social-details"><span class="social-name">Email</span><span class="social-handle">enfantdunetpro@gmail.com</span></div></div>
                     <span class="social-arrow">↗</span>
                 </a>
             </div>
         </section>
 
-        <!-- Footer -->
         <footer>
             <p data-key="footerText">microb © 2026 • Developer Portfolio</p>
         </footer>
-
     </div>
 
-    <!-- Interactive Logic Control Script -->
     <script>
         const translations = {
             en: {
-                navHome: "Home",
-                navProjects: "Projects",
-                navWork: "Work",
-                navContact: "Contact",
+                navHome: "Home", navProjects: "Projects", navWork: "Work", navRedesign: "Redesign", navContact: "Contact",
                 statusText: "Available for commissions / hiring",
                 heroTitle: "Designing <span>High-Performance Experiences</span> on Roblox.",
                 heroBio: "Specialized in developing modular, clean system architectures in Luau. I combine engineering precision with smooth, modern user interfaces.",
-                btnWork: "View My Work",
-                btnConnect: "Contact Me",
+                btnWork: "View My Work", btnConnect: "Contact Me",
                 projectsTitle: "Active <span>Projects</span>",
                 project1Tag: "[Stadium/Simulation & Combat]",
-                statLikes: "Likes:",
-                statVisits: "Visits:",
-                statActive: "Active:",
-                statStatus: "Status:",
-                statDev: "In Development...",
+                statLikes: "Likes:", statVisits: "Visits:", statActive: "Active:", statStatus: "Status:", statDev: "In Development...",
                 gameProjectDesc: "An immersive stadium experience featuring tactical combat, team dynamics, fully scripted UI frameworks, and fluid user systems built around the legendary Moroccan derby clash.",
                 btnPlayGame: "Play on Roblox 🎮",
                 project2Tag: "[Roleplay / Urban Life]",
                 project2Desc: "An upcoming retro urban simulation project focusing on city lifestyle, custom interactive systems, and deep visual aesthetics.",
                 btnComingSoon: "Coming Soon 🚀",
-                workTitle: "Module <span>Gallery</span>",
-                filterAll: "All",
+                workTitle: "Module <span>Gallery</span>", filterAll: "All",
                 showcase1Title: "Main Menu UI System",
                 showcase1Desc: "An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.",
                 showcase2Title: "Combat & Movement System",
                 showcase2Desc: "Fluid custom animations featuring combat stance, aggressive machete running cycles, and smooth crouching behaviors designed for tactical urban engagement.",
-                urbShowcase1Title: "Main Menu Initialization",
-                urbShowcase1Desc: "Async loading system with an interactive welcome screen and smooth navigation flow for The Urblox.",
-                urbShowcase2Title: "Map Selection Interface",
-                urbShowcase2Desc: "Interactive zone selection system with click detection on GUI graphical elements.",
-                urbShowcase3Title: "Character Customizer",
-                urbShowcase3Desc: "Advanced avatar customization: gender, color palette and dynamic accessories for player characters.",
-                urbShowcase4Title: "Registration & Keyboard System",
-                urbShowcase4Desc: "Interactive virtual keyboard for secure input of the player character's first and last name.",
+                urbShowcase1Title: "Main Menu Initialization", urbShowcase1Desc: "Async loading system with an interactive welcome screen and smooth navigation flow for The Urblox.",
+                urbShowcase2Title: "Map Selection Interface", urbShowcase2Desc: "Interactive zone selection system with click detection on GUI graphical elements.",
+                urbShowcase3Title: "Character Customizer", urbShowcase3Desc: "Advanced avatar customization: gender, color palette and dynamic accessories for player characters.",
+                urbShowcase4Title: "Registration & Keyboard System", urbShowcase4Desc: "Interactive virtual keyboard for secure input of the player character's first and last name.",
+                redesignTitle: "GUI <span>Redesign</span>",
+                redesignSubtitle: "Before & after comparison of the SBR HUD overhaul.",
+                redesignBefore: "BEFORE", redesignAfter: "AFTER",
+                redesignDetail1Title: "Full GUI Overhaul",
+                redesignDetail1Desc: "Every element rebuilt from scratch: ProfileCard, CashCard, QueuePanel, Shop & Settings buttons all received a unified dark theme with UI gradients, rounded corners and consistent typography.",
+                redesignDetail2Title: "UI Gradients & Polish",
+                redesignDetail2Desc: "UIGradient across all cards and buttons — Shop went from plain black square to styled beige/gold rectangle with icon, Settings button got a matching dark gradient treatment.",
+                redesignDetail3Title: "HUD Animations — Luau Script",
+                redesignDetail3Desc: "On panel open: all HUD elements slide off-screen, both OpenBtns slide right, blur effect kicks in and camera FOV widens for a cinematic depth feel. Everything slides back on close.",
+                redesignDetail4Title: "Structured Layout",
+                redesignDetail4Desc: "Every element repositioned for clarity: ProfileCard top-left (larger, more airy), CashCard bottom-left with $ icon, QueuePanel bottom-right, Shop top-right, Settings bottom-right, status panel bottom-center.",
                 contactTitle: "Get In <span>Touch</span>",
                 footerText: "microb © 2026 • Developer Portfolio"
             },
             fr: {
-                navHome: "Accueil",
-                navProjects: "Projets",
-                navWork: "Galerie",
-                navContact: "Contact",
+                navHome: "Accueil", navProjects: "Projets", navWork: "Galerie", navRedesign: "Refonte", navContact: "Contact",
                 statusText: "Disponible pour des projets",
                 heroTitle: "Concepteur d'<span>Expériences Hautes Performances</span> sur Roblox.",
                 heroBio: "Spécialisé dans le développement d'architectures système modulaires et propres sur Roblox. Je combine une ingénierie de script rigoureuse avec des interfaces utilisateurs fluides et précises.",
-                btnWork: "Voir mon travail",
-                btnConnect: "Me contacter",
+                btnWork: "Voir mon travail", btnConnect: "Me contacter",
                 projectsTitle: "Projets <span>Actifs</span>",
                 project1Tag: "[Stade/Simulation & Combat]",
-                statLikes: "Mentions J'aime :",
-                statVisits: "Visites :",
-                statActive: "Actifs :",
-                statStatus: "Statut :",
-                statDev: "En cours de développement...",
+                statLikes: "Mentions J'aime :", statVisits: "Visites :", statActive: "Actifs :", statStatus: "Statut :", statDev: "En cours de développement...",
                 gameProjectDesc: "Une expérience de stade immersive comprenant un système de combat tactique, des dynamiques d'équipes, des interfaces entièrement scriptées et des modules fluides autour du mythique derby marocain.",
                 btnPlayGame: "Jouer sur Roblox 🎮",
                 project2Tag: "[Roleplay / Vie Urbaine]",
                 project2Desc: "Un projet à venir de simulation urbaine rétro, axé sur le style de vie citadin, des systèmes interactifs personnalisés et une esthétique visuelle poussée.",
                 btnComingSoon: "Bientôt disponible 🚀",
-                workTitle: "Galerie de <span>Modules</span>",
-                filterAll: "Tous",
+                workTitle: "Galerie de <span>Modules</span>", filterAll: "Tous",
                 showcase1Title: "Système UI Menu Principal",
                 showcase1Desc: "Un menu principal de stade immersif comprenant la sélection interactive d'équipe, l'affichage dynamique des contrôles et une boutique de Game Passes intégrée.",
                 showcase2Title: "Système de Combat & Mouvements",
                 showcase2Desc: "Animations personnalisées fluides comprenant les postures de combat, les cycles de course agressifs avec machette et les mouvements accroupis (crouch) fluides.",
-                urbShowcase1Title: "Initialisation du Menu Principal",
-                urbShowcase1Desc: "Chargement asynchrone, écran d'accueil interactif et navigation fluide pour The Urblox.",
-                urbShowcase2Title: "Interface de Sélection de Map",
-                urbShowcase2Desc: "Système de sélection de zone interactive avec détection de clics sur éléments graphiques (GUI).",
-                urbShowcase3Title: "Customiseur de Personnage",
-                urbShowcase3Desc: "Personnalisation avancée : genre, colorimétrie et accessoires dynamiques pour les avatars.",
-                urbShowcase4Title: "Système d'Inscription & Clavier",
-                urbShowcase4Desc: "Clavier virtuel interactif pour la saisie sécurisée du prénom et du nom du personnage joueur.",
+                urbShowcase1Title: "Initialisation du Menu Principal", urbShowcase1Desc: "Chargement asynchrone, écran d'accueil interactif et navigation fluide pour The Urblox.",
+                urbShowcase2Title: "Interface de Sélection de Map", urbShowcase2Desc: "Système de sélection de zone interactive avec détection de clics sur éléments graphiques (GUI).",
+                urbShowcase3Title: "Customiseur de Personnage", urbShowcase3Desc: "Personnalisation avancée : genre, colorimétrie et accessoires dynamiques pour les avatars.",
+                urbShowcase4Title: "Système d'Inscription & Clavier", urbShowcase4Desc: "Clavier virtuel interactif pour la saisie sécurisée du prénom et du nom du personnage joueur.",
+                redesignTitle: "Refonte <span>Interface</span>",
+                redesignSubtitle: "Comparaison avant/après de la refonte du HUD SBR.",
+                redesignBefore: "AVANT", redesignAfter: "APRÈS",
+                redesignDetail1Title: "Refonte Complète du GUI",
+                redesignDetail1Desc: "Chaque élément reconstruit de zéro : ProfileCard, CashCard, QueuePanel, bouton Shop et bouton Paramètres ont tous reçu un thème sombre unifié avec dégradés UI, coins arrondis et typographie cohérente.",
+                redesignDetail2Title: "Dégradés UI & Finitions",
+                redesignDetail2Desc: "UIGradient appliqué sur toutes les cards et boutons — le Shop est passé d'un carré noir basique à un rectangle beige/doré stylé avec icône, le bouton Paramètres a reçu un traitement dégradé sombre assorti.",
+                redesignDetail3Title: "Animations HUD — Script Luau",
+                redesignDetail3Desc: "LocalScript pur : TweenService fait glisser chaque élément HUD hors écran via des offsets basés sur AbsoluteSize, fade les deux OpenBtns, tweene l'intensité du BlurEffect dans Lighting et le FieldOfView de la caméra. Tout est inversé à la fermeture du panel.",
+                redesignDetail4Title: "Mise en Page Structurée",
+                redesignDetail4Desc: "Repositionnement de chaque élément pour plus de clarté : ProfileCard en haut à gauche (plus grande, plus aérée), CashCard en bas à gauche avec icône $, QueuePanel en bas à droite, Shop en haut à droite, Paramètres en bas à droite, statut en bas au centre.",
                 contactTitle: "Discutons <span>Ensemble</span>",
                 footerText: "microb © 2026 • Portfolio de Développeur"
             }
@@ -1050,43 +1414,28 @@
         function applyLanguage(lang) {
             const body = document.body;
             const btn = document.getElementById('langBtn');
-            
             body.setAttribute('lang', lang);
             btn.innerText = lang === 'en' ? 'FR' : 'EN';
-            
             document.querySelectorAll('[data-key]').forEach(element => {
                 const key = element.getAttribute('data-key');
-                if (translations[lang][key]) {
-                    element.innerHTML = translations[lang][key];
-                }
+                if (translations[lang][key]) element.innerHTML = translations[lang][key];
             });
-            
             localStorage.setItem('preferred-lang', lang);
         }
 
         function toggleLanguage() {
             const currentLang = document.body.getAttribute('lang') || 'en';
-            const nextLang = currentLang === 'en' ? 'fr' : 'en';
-            applyLanguage(nextLang);
+            applyLanguage(currentLang === 'en' ? 'fr' : 'en');
         }
 
-        // Gallery Filter System Logic
         function filterGallery(btn, category) {
-            // Update active button state
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            // Show/hide cards based on data-game attribute
             document.querySelectorAll('.showcase-card').forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = card.getAttribute('data-game') === category ? 'block' : 'none';
-                }
+                card.style.display = category === 'all' ? 'block' : (card.getAttribute('data-game') === category ? 'block' : 'none');
             });
         }
 
-        // Bootstrap page setup on load
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'en';
             applyLanguage(savedLang);
@@ -1094,4 +1443,3 @@
     </script>
 </body>
 </html>
-
