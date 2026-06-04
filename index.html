@@ -615,6 +615,24 @@
  }
 
 
+ .commission-badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 5px;
+ background: rgba(16, 185, 129, 0.15);
+ border: 1px solid rgba(16, 185, 129, 0.3);
+ color: var(--accent-color);
+ font-size: 0.7rem;
+ font-weight: 700;
+ padding: 3px 10px;
+ border-radius: 20px;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ margin-bottom: 8px;
+
+ }
+
+
  .skills-marquee {
  display: flex;
  gap: 15px;
@@ -1107,9 +1125,22 @@
                     <button class="filter-btn active" onclick="filterGallery(this, 'all')" data-key="filterAll">All</button>
                     <button class="filter-btn" onclick="filterGallery(this, 'wydad-raja')">Wydad Vs Raja</button>
                     <button class="filter-btn" onclick="filterGallery(this, 'the-urblox')">The Urblox</button>
+                    <button class="filter-btn" onclick="filterGallery(this, 'commission')" data-key="filterCommission">Commissions</button>
                 </div>
             </div>
             <div class="showcase-grid" id="galleryGrid">
+
+                <!-- COMMISSION CARD — haut gauche -->
+                <div class="showcase-card" data-game="commission">
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="building.mp4" type="video/mp4"></video></div>
+                    <div class="project-info">
+                        <div class="commission-badge">✦ Commission</div>
+                        <div class="project-tag">[Scripting & Gameplay]</div>
+                        <h3 data-key="commShowcase1Title">Building System</h3>
+                        <p data-key="commShowcase1Desc">Custom block placement system — directional line preview, random color variants, placement sound, and server-side anti-overlap protection.</p>
+                    </div>
+                </div>
+
                 <div class="showcase-card" data-game="the-urblox">
                     <div class="video-wrapper"><video controls preload="metadata"><source src="TheUrblox_MainMenu.mp4" type="video/mp4"></video></div>
                     <div class="project-info">
@@ -1349,7 +1380,9 @@
                 project2Tag: "[Roleplay / Urban Life]",
                 project2Desc: "An upcoming retro urban simulation project focusing on city lifestyle, custom interactive systems, and deep visual aesthetics.",
                 btnComingSoon: "Coming Soon 🚀",
-                workTitle: "Module <span>Gallery</span>", filterAll: "All",
+                workTitle: "Module <span>Gallery</span>", filterAll: "All", filterCommission: "Commissions",
+                commShowcase1Title: "Building System",
+                commShowcase1Desc: "Custom block placement system — directional line preview, random color variants, placement sound, and server-side anti-overlap protection.",
                 showcase1Title: "Main Menu UI System",
                 showcase1Desc: "An immersive stadium main menu featuring interactive team selection, dynamic controls display, and an integrated game pass store.",
                 showcase2Title: "Combat & Movement System",
@@ -1386,7 +1419,9 @@
                 project2Tag: "[Roleplay / Vie Urbaine]",
                 project2Desc: "Un projet à venir de simulation urbaine rétro, axé sur le style de vie citadin, des systèmes interactifs personnalisés et une esthétique visuelle poussée.",
                 btnComingSoon: "Bientôt disponible 🚀",
-                workTitle: "Galerie de <span>Modules</span>", filterAll: "Tous",
+                workTitle: "Galerie de <span>Modules</span>", filterAll: "Tous", filterCommission: "Commissions",
+                commShowcase1Title: "Building System",
+                commShowcase1Desc: "Système de placement de blocs personnalisé — aperçu directionnel en ligne, couleurs aléatoires, son de placement et protection anti-superposition côté serveur.",
                 showcase1Title: "Système UI Menu Principal",
                 showcase1Desc: "Un menu principal de stade immersif comprenant la sélection interactive d'équipe, l'affichage dynamique des contrôles et une boutique de Game Passes intégrée.",
                 showcase2Title: "Système de Combat & Mouvements",
